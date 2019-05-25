@@ -10,13 +10,13 @@ using System.Windows.Forms;
 
 namespace FinalProjectWinForms
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
 
         #region Clipboard management
 
         /// <summary>
-        /// Handles the Click event of the tsCut control.
+        /// Handles the Click event of the tsCut button.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
@@ -26,7 +26,7 @@ namespace FinalProjectWinForms
         }
 
         /// <summary>
-        /// Handles the Click event of the tsCopy control.
+        /// Handles the Click event of the tsCopy button.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
@@ -36,7 +36,7 @@ namespace FinalProjectWinForms
         }
 
         /// <summary>
-        /// Handles the Click event of the tsPaste control.
+        /// Handles the Click event of the tsPaste button.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
@@ -46,5 +46,29 @@ namespace FinalProjectWinForms
         }
 
         #endregion Clipboard management
+
+        #region Undo/redo
+
+        /// <summary>
+        /// Handles the Click event of the tsUndo button.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        private void tsUndo_Click(object sender, EventArgs e)
+        {
+            rtb.Undo();
+        }
+
+        /// <summary>
+        /// Handles the Click event of the tsRedo button.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        private void tsRedo_Click(object sender, EventArgs e)
+        {
+            rtb.Redo();
+        }
+
+        #endregion Undo/Redo
     }
 }

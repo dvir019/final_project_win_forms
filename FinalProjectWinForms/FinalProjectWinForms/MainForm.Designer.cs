@@ -276,7 +276,7 @@
             this.toolStripForegroundColor.Name = "toolStripForegroundColor";
             this.toolStripForegroundColor.Size = new System.Drawing.Size(33, 24);
             this.toolStripForegroundColor.Text = "    ";
-            this.toolStripForegroundColor.ToolTipText = "Font color  ";
+            this.toolStripForegroundColor.ToolTipText = "Foreground color";
             // 
             // tsSelectFontColor
             // 

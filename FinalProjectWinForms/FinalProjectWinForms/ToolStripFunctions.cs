@@ -80,43 +80,47 @@ namespace FinalProjectWinForms
         #region Font style management
 
         /// <summary>
-        /// Handles the Click event of the tsBold control.
+        /// Handles the Click event of the toolStripBold button.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void tsBold_Click(object sender, EventArgs e)
+        private void toolStripBold_Click(object sender, EventArgs e)
         {
-            ChangeFontStyle(!rtb.SelectionFont.Bold, rtb.SelectionFont.Italic, rtb.SelectionFont.Underline, rtb.SelectionFont.Strikeout);
+            Font selectionFont = rtb.SelectionFont;
+            ChangeFontStyle(!selectionFont.Bold, selectionFont.Italic, selectionFont.Underline, selectionFont.Strikeout);
         }
 
         /// <summary>
-        /// Handles the Click event of the tsItalic control.
+        /// Handles the Click event of the toolStripItalic button.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void tsItalic_Click(object sender, EventArgs e)
+        private void toolStripItalic_Click(object sender, EventArgs e)
         {
-            ChangeFontStyle(rtb.SelectionFont.Bold, !rtb.SelectionFont.Italic, rtb.SelectionFont.Underline, rtb.SelectionFont.Strikeout);
+            Font selectionFont = rtb.SelectionFont;
+            ChangeFontStyle(selectionFont.Bold, !selectionFont.Italic, selectionFont.Underline, selectionFont.Strikeout);
         }
 
         /// <summary>
-        /// Handles the Click event of the tsUnderline control.
+        /// Handles the Click event of the toolStripUnderline button.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void tsUnderline_Click(object sender, EventArgs e)
+        private void toolStripUnderline_Click(object sender, EventArgs e)
         {
-            ChangeFontStyle(rtb.SelectionFont.Bold, rtb.SelectionFont.Italic, !rtb.SelectionFont.Underline, rtb.SelectionFont.Strikeout);
+            Font selectionFont = rtb.SelectionFont;
+            ChangeFontStyle(selectionFont.Bold, selectionFont.Italic, !selectionFont.Underline, selectionFont.Strikeout);
         }
 
         /// <summary>
-        /// Handles the Click event of the tsStrikeout control.
+        /// Handles the Click event of the toolStripStrikeout button.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void tsStrikeout_Click(object sender, EventArgs e)
+        private void toolStripStrikeout_Click(object sender, EventArgs e)
         {
-            ChangeFontStyle(rtb.SelectionFont.Bold, rtb.SelectionFont.Italic, rtb.SelectionFont.Underline, !rtb.SelectionFont.Strikeout);
+            Font selectionFont = rtb.SelectionFont;
+            ChangeFontStyle(selectionFont.Bold, selectionFont.Italic, selectionFont.Underline, !selectionFont.Strikeout);
         }
 
         /// <summary>
@@ -140,9 +144,70 @@ namespace FinalProjectWinForms
                 newFontStyle |= FontStyle.Strikeout;
 
             rtb.SelectionFont = new Font(rtb.SelectionFont, newFontStyle);
+            CheckAndUncheckStyleButtons();
             //rtb_SelectionChanged(rtb, new EventArgs());
         }
 
-#endregion Font style management
+        private void CheckAndUncheckStyleButtons()
+        {
+            Font selectionFont = rtb.SelectionFont;
+            if (selectionFont != null)
+            {
+                toolStripBold.Checked = selectionFont.Bold;
+                toolStripItalic.Checked = selectionFont.Italic;
+                toolStripUnderline.Checked = selectionFont.Underline;
+                toolStripStrikeout.Checked = selectionFont.Strikeout;
+            }
+        }
+
+        #endregion Font style management
+
+        #region Alignment management
+
+        /// <summary>
+        /// Handles the Click event of the toolStripLeft button.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        private void toolStripLeft_Click(object sender, EventArgs e)
+        {
+            rtb.SelectionAlignment = HorizontalAlignment.Left;
+            CheckAndUncheckAlignmentButtons();
+            //rtb_SelectionChanged(rtb, new EventArgs());
+        }
+
+        /// <summary>
+        /// Handles the Click event of the toolStripCenter button.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        private void toolStripCenter_Click(object sender, EventArgs e)
+        {
+            rtb.SelectionAlignment = HorizontalAlignment.Center;
+            CheckAndUncheckAlignmentButtons();
+            //rtb_SelectionChanged(rtb, new EventArgs());
+        }
+
+        /// <summary>
+        /// Handles the Click event of the toolStripRight button.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        private void toolStripRight_Click(object sender, EventArgs e)
+        {
+            rtb.SelectionAlignment = HorizontalAlignment.Right;
+            CheckAndUncheckAlignmentButtons();
+            //rtb_SelectionChanged(rtb, new EventArgs());
+        }
+
+        private void CheckAndUncheckAlignmentButtons()
+        {
+            HorizontalAlignment selectionAlignment = rtb.SelectionAlignment;
+            toolStripRight.Checked = selectionAlignment == HorizontalAlignment.Right;
+            toolStripLeft.Checked = selectionAlignment == HorizontalAlignment.Left;
+            toolStripCenter.Checked = selectionAlignment == HorizontalAlignment.Center;
+        }
+
+        #endregion Alignment management
     }
 }

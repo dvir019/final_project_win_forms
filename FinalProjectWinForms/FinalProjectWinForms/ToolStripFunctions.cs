@@ -209,5 +209,26 @@ namespace FinalProjectWinForms
         }
 
         #endregion Alignment management
+
+        #region Bullet management
+
+        /// <summary>
+        /// Handles the Click event of the toolStripBullet button.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        private void toolStripBullet_Click(object sender, EventArgs e)
+        {
+            rtb.SelectionBullet = !rtb.SelectionBullet;
+            CheckAndUncheckBulletButton();
+            //rtb_SelectionChanged(rtb, new EventArgs());
+        }
+
+        private void CheckAndUncheckBulletButton()
+        {
+            toolStripBullet.Checked = rtb.SelectionBullet;
+        }
+
+        #endregion Bullet management
     }
 }

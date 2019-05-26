@@ -54,6 +54,8 @@
             this.tsSelectFontColor = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripBackgroundColor = new System.Windows.Forms.ToolStripDropDownButton();
             this.tsSelectBackgroundColor = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripBullet = new System.Windows.Forms.ToolStripButton();
             this.rtb = new System.Windows.Forms.RichTextBox();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -91,7 +93,9 @@
             this.toolStripRight,
             this.toolStripSeparator3,
             this.toolStripForegroundColor,
-            this.toolStripBackgroundColor});
+            this.toolStripBackgroundColor,
+            this.toolStripSeparator5,
+            this.toolStripBullet});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(800, 27);
@@ -314,8 +318,25 @@
             this.tsSelectBackgroundColor.Size = new System.Drawing.Size(144, 22);
             this.tsSelectBackgroundColor.Text = "Select color...";
             // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 27);
+            // 
+            // toolStripBullet
+            // 
+            this.toolStripBullet.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripBullet.Image = global::FinalProjectWinForms.Properties.Resources.bullist;
+            this.toolStripBullet.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripBullet.ImageTransparentColor = System.Drawing.Color.Transparent;
+            this.toolStripBullet.Name = "toolStripBullet";
+            this.toolStripBullet.Size = new System.Drawing.Size(24, 24);
+            this.toolStripBullet.Text = "Bullet";
+            this.toolStripBullet.Click += new System.EventHandler(this.toolStripBullet_Click);
+            // 
             // rtb
             // 
+            this.rtb.BulletIndent = 15;
             this.rtb.Location = new System.Drawing.Point(48, 54);
             this.rtb.Name = "rtb";
             this.rtb.Size = new System.Drawing.Size(728, 384);
@@ -371,6 +392,8 @@
         private System.Windows.Forms.ToolStripDropDownButton toolStripBackgroundColor;
         private System.Windows.Forms.ToolStripMenuItem tsSelectBackgroundColor;
         private System.Windows.Forms.RichTextBox rtb;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
+        private System.Windows.Forms.ToolStripButton toolStripBullet;
     }
 }
 

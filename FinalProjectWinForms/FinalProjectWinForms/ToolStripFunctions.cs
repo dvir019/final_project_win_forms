@@ -58,7 +58,7 @@ namespace FinalProjectWinForms
         {
             if (rtb.CanUndo)
                 rtb.Undo();
-            else
+            if (!rtb.CanUndo)
                 toolStripUndo.Enabled = false;
         }
 

@@ -71,7 +71,7 @@ namespace FinalProjectWinForms
         {
             if (rtb.CanRedo)
                 rtb.Redo();
-            else
+            if (!rtb.CanRedo)
                 toolStripRedo.Enabled = false;
         }
 

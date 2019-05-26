@@ -142,6 +142,7 @@
             this.toolStripCut.Name = "toolStripCut";
             this.toolStripCut.Size = new System.Drawing.Size(24, 24);
             this.toolStripCut.Text = "Cut";
+            this.toolStripCut.Click += new System.EventHandler(this.toolStripCut_Click);
             // 
             // toolStripCopy
             // 
@@ -152,6 +153,7 @@
             this.toolStripCopy.Name = "toolStripCopy";
             this.toolStripCopy.Size = new System.Drawing.Size(24, 24);
             this.toolStripCopy.Text = "Copy";
+            this.toolStripCopy.Click += new System.EventHandler(this.toolStripCopy_Click);
             // 
             // toolStripPaste
             // 
@@ -162,6 +164,7 @@
             this.toolStripPaste.Name = "toolStripPaste";
             this.toolStripPaste.Size = new System.Drawing.Size(24, 24);
             this.toolStripPaste.Text = "Paste";
+            this.toolStripPaste.Click += new System.EventHandler(this.toolStripPaste_Click);
             // 
             // toolStripSeparator4
             // 
@@ -281,7 +284,7 @@
             // tsSelectFontColor
             // 
             this.tsSelectFontColor.Name = "tsSelectFontColor";
-            this.tsSelectFontColor.Size = new System.Drawing.Size(180, 22);
+            this.tsSelectFontColor.Size = new System.Drawing.Size(144, 22);
             this.tsSelectFontColor.Text = "Select color...";
             // 
             // toolStripBackgroundColor
@@ -299,7 +302,7 @@
             // tsSelectBackgroundColor
             // 
             this.tsSelectBackgroundColor.Name = "tsSelectBackgroundColor";
-            this.tsSelectBackgroundColor.Size = new System.Drawing.Size(180, 22);
+            this.tsSelectBackgroundColor.Size = new System.Drawing.Size(144, 22);
             this.tsSelectBackgroundColor.Text = "Select color...";
             // 
             // rtb

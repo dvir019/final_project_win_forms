@@ -230,5 +230,17 @@ namespace FinalProjectWinForms
         }
 
         #endregion Bullet management
+
+
+        #region CheckAndUnCheckAllButtons
+
+        private void CheckAndUnCheckAllButtons()
+        {
+            CheckAndUncheckAlignmentButtons();
+            CheckAndUncheckBulletButton();
+            CheckAndUncheckStyleButtons();
+        }
+
+        #endregion CheckAndUnCheckAllButtons
     }
 }

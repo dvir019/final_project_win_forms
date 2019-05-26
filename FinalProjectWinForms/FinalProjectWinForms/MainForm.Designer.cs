@@ -251,6 +251,7 @@
             this.toolStripLeft.Name = "toolStripLeft";
             this.toolStripLeft.Size = new System.Drawing.Size(24, 24);
             this.toolStripLeft.Text = "Left";
+            this.toolStripLeft.Click += new System.EventHandler(this.toolStripLeft_Click);
             // 
             // toolStripCenter
             // 
@@ -260,6 +261,7 @@
             this.toolStripCenter.Name = "toolStripCenter";
             this.toolStripCenter.Size = new System.Drawing.Size(24, 24);
             this.toolStripCenter.Text = "Center";
+            this.toolStripCenter.Click += new System.EventHandler(this.toolStripCenter_Click);
             // 
             // toolStripRight
             // 
@@ -269,6 +271,7 @@
             this.toolStripRight.Name = "toolStripRight";
             this.toolStripRight.Size = new System.Drawing.Size(24, 24);
             this.toolStripRight.Text = "Right";
+            this.toolStripRight.Click += new System.EventHandler(this.toolStripRight_Click);
             // 
             // toolStripSeparator3
             // 

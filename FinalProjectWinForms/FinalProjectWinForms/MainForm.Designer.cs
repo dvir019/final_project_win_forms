@@ -180,6 +180,7 @@
             this.toolStripUndo.Name = "toolStripUndo";
             this.toolStripUndo.Size = new System.Drawing.Size(24, 24);
             this.toolStripUndo.Text = "Undo";
+            this.toolStripUndo.Click += new System.EventHandler(this.toolStripUndo_Click);
             // 
             // toolStripRedo
             // 
@@ -190,6 +191,7 @@
             this.toolStripRedo.Name = "toolStripRedo";
             this.toolStripRedo.Size = new System.Drawing.Size(24, 24);
             this.toolStripRedo.Text = "Redo";
+            this.toolStripRedo.Click += new System.EventHandler(this.toolStripRedo_Click);
             // 
             // toolStripSeparator1
             // 
@@ -204,6 +206,7 @@
             this.toolStripBold.Name = "toolStripBold";
             this.toolStripBold.Size = new System.Drawing.Size(24, 24);
             this.toolStripBold.Text = "Bold";
+            this.toolStripBold.Click += new System.EventHandler(this.toolStripBold_Click);
             // 
             // toolStripItalic
             // 
@@ -213,6 +216,7 @@
             this.toolStripItalic.Name = "toolStripItalic";
             this.toolStripItalic.Size = new System.Drawing.Size(24, 24);
             this.toolStripItalic.Text = "Italic";
+            this.toolStripItalic.Click += new System.EventHandler(this.toolStripItalic_Click);
             // 
             // toolStripUnderline
             // 
@@ -222,6 +226,7 @@
             this.toolStripUnderline.Name = "toolStripUnderline";
             this.toolStripUnderline.Size = new System.Drawing.Size(24, 24);
             this.toolStripUnderline.Text = "Underline";
+            this.toolStripUnderline.Click += new System.EventHandler(this.toolStripUnderline_Click);
             // 
             // toolStripStrikeout
             // 
@@ -231,6 +236,7 @@
             this.toolStripStrikeout.Name = "toolStripStrikeout";
             this.toolStripStrikeout.Size = new System.Drawing.Size(24, 24);
             this.toolStripStrikeout.Text = "Strikeout";
+            this.toolStripStrikeout.Click += new System.EventHandler(this.toolStripStrikeout_Click);
             // 
             // toolStripSeparator2
             // 

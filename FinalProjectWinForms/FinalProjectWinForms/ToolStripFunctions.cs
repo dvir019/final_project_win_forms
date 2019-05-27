@@ -153,6 +153,9 @@ namespace FinalProjectWinForms
             CheckAndUncheckStyleButtons();
         }
 
+        /// <summary>
+        /// Checks or unchecks all of the style buttons according to the style of the selection.
+        /// </summary>
         private void CheckAndUncheckStyleButtons()
         {
             Font selectionFont = rtb.SelectionFont;
@@ -202,6 +205,9 @@ namespace FinalProjectWinForms
             CheckAndUncheckAlignmentButtons();
         }
 
+        /// <summary>
+        /// Checks or unchecks all of the alignment buttons according to the alignment of the selection.
+        /// </summary>
         private void CheckAndUncheckAlignmentButtons()
         {
             HorizontalAlignment selectionAlignment = rtb.SelectionAlignment;
@@ -225,6 +231,9 @@ namespace FinalProjectWinForms
             CheckAndUncheckBulletButton();
         }
 
+        /// <summary>
+        /// Checks or unchecks the bullet button according to the bulleting of the selection.
+        /// </summary>
         private void CheckAndUncheckBulletButton()
         {
             toolStripBullet.Checked = rtb.SelectionBullet;
@@ -307,11 +316,15 @@ namespace FinalProjectWinForms
 
         #region CheckAndUnCheckAllButtons
 
-        private void CheckAndUnCheckAllButtons()
+        /// <summary>
+        /// Update all of buttons and comboBoxes of the toolStrip
+        /// </summary>
+        private void UpdateToolStripButtonsAndComboBoxes()
         {
             CheckAndUncheckAlignmentButtons();
             CheckAndUncheckBulletButton();
             CheckAndUncheckStyleButtons();
+            PaintColorButtons();
         }
 
         #endregion CheckAndUnCheckAllButtons

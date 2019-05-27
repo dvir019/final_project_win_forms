@@ -58,6 +58,7 @@
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripBullet = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripFontSize = new System.Windows.Forms.ToolStripComboBox();
             this.toolStripFontType = new System.Windows.Forms.ToolStripButton();
             this.rtb = new System.Windows.Forms.RichTextBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -67,7 +68,6 @@
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.contextMenuStripUndo = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStripRedo = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripFontSize = new System.Windows.Forms.ToolStripComboBox();
             this.toolStrip1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -358,6 +358,27 @@
             this.toolStripSeparator7.Name = "toolStripSeparator7";
             this.toolStripSeparator7.Size = new System.Drawing.Size(6, 27);
             // 
+            // toolStripFontSize
+            // 
+            this.toolStripFontSize.AutoSize = false;
+            this.toolStripFontSize.Items.AddRange(new object[] {
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "14",
+            "16",
+            "24",
+            "36",
+            "48",
+            "72"});
+            this.toolStripFontSize.Name = "toolStripFontSize";
+            this.toolStripFontSize.Size = new System.Drawing.Size(50, 23);
+            this.toolStripFontSize.SelectedIndexChanged += new System.EventHandler(this.toolStripFontSize_SelectedIndexChanged);
+            this.toolStripFontSize.Leave += new System.EventHandler(this.toolStripFontSize_Leave);
+            this.toolStripFontSize.KeyUp += new System.Windows.Forms.KeyEventHandler(this.toolStripFontSize_KeyUp);
+            // 
             // toolStripFontType
             // 
             this.toolStripFontType.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
@@ -427,24 +448,6 @@
             this.contextMenuStripRedo.Name = "contextMenuStripRedo";
             this.contextMenuStripRedo.Size = new System.Drawing.Size(103, 22);
             this.contextMenuStripRedo.Text = "Redo";
-            // 
-            // toolStripFontSize
-            // 
-            this.toolStripFontSize.AutoSize = false;
-            this.toolStripFontSize.Items.AddRange(new object[] {
-            "8",
-            "9",
-            "10",
-            "11",
-            "12",
-            "14",
-            "16",
-            "24",
-            "36",
-            "48",
-            "72"});
-            this.toolStripFontSize.Name = "toolStripFontSize";
-            this.toolStripFontSize.Size = new System.Drawing.Size(50, 27);
             // 
             // MainForm
             // 

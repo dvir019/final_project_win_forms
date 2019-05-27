@@ -93,7 +93,7 @@ namespace FinalProjectWinForms
         private void toolStripBold_Click(object sender, EventArgs e)
         {
             Font selectionFont = rtb.SelectionFont;
-            ChangeFontStyle(!selectionFont.Bold, selectionFont.Italic, selectionFont.Underline, selectionFont.Strikeout);
+            ChangeSelectedFontStyle(!selectionFont.Bold, selectionFont.Italic, selectionFont.Underline, selectionFont.Strikeout);
         }
 
         /// <summary>
@@ -104,7 +104,7 @@ namespace FinalProjectWinForms
         private void toolStripItalic_Click(object sender, EventArgs e)
         {
             Font selectionFont = rtb.SelectionFont;
-            ChangeFontStyle(selectionFont.Bold, !selectionFont.Italic, selectionFont.Underline, selectionFont.Strikeout);
+            ChangeSelectedFontStyle(selectionFont.Bold, !selectionFont.Italic, selectionFont.Underline, selectionFont.Strikeout);
         }
 
         /// <summary>
@@ -115,7 +115,7 @@ namespace FinalProjectWinForms
         private void toolStripUnderline_Click(object sender, EventArgs e)
         {
             Font selectionFont = rtb.SelectionFont;
-            ChangeFontStyle(selectionFont.Bold, selectionFont.Italic, !selectionFont.Underline, selectionFont.Strikeout);
+            ChangeSelectedFontStyle(selectionFont.Bold, selectionFont.Italic, !selectionFont.Underline, selectionFont.Strikeout);
         }
 
         /// <summary>
@@ -126,7 +126,7 @@ namespace FinalProjectWinForms
         private void toolStripStrikeout_Click(object sender, EventArgs e)
         {
             Font selectionFont = rtb.SelectionFont;
-            ChangeFontStyle(selectionFont.Bold, selectionFont.Italic, selectionFont.Underline, !selectionFont.Strikeout);
+            ChangeSelectedFontStyle(selectionFont.Bold, selectionFont.Italic, selectionFont.Underline, !selectionFont.Strikeout);
         }
 
         /// <summary>
@@ -136,7 +136,7 @@ namespace FinalProjectWinForms
         /// <param name="fontItalic">if set to <c>true</c> [font italic].</param>
         /// <param name="fontUnderline">if set to <c>true</c> [font underline].</param>
         /// <param name="fontStrikeout">if set to <c>true</c> [font strikeout].</param>
-        private void ChangeFontStyle(bool fontBold, bool fontItalic, bool fontUnderline, bool fontStrikeout)
+        private void ChangeSelectedFontStyle(bool fontBold, bool fontItalic, bool fontUnderline, bool fontStrikeout)
         {
             FontStyle newFontStyle = FontStyle.Regular;
 
@@ -314,7 +314,7 @@ namespace FinalProjectWinForms
         #region Font and font size
 
         /// <summary>
-        /// Handles the Click event of the tsFontType control.
+        /// Handles the Click event of the toolStripFontType button.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
@@ -332,10 +332,42 @@ namespace FinalProjectWinForms
         }
 
         /// <summary>
-        /// Changes the size of the font type and.
+        /// Handles the SelectedIndexChanged event of the toolStripFontSize combyBox.
         /// </summary>
-        /// <param name="fontFamily">The font family.</param>
-        /// <param name="fontSize">Size of the font.</param>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        private void toolStripFontSize_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ChangeSelectedFontSize(toolStripFontSize.SelectedItem.ToString());
+        }
+
+        /// <summary>
+        /// Handles the Leave event of the toolStripFontSize comboBox.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        private void toolStripFontSize_Leave(object sender, EventArgs e)
+        {
+            ChangeSelectedFontSize(toolStripFontSize.Text);
+        }
+
+        /// <summary>
+        /// Handles the KeyUp event of the toolStripFontSize comboBox.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.Windows.Forms.KeyEventArgs"/> instance containing the event data.</param>
+        private void toolStripFontSize_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                ChangeSelectedFontSize(toolStripFontSize.Text);
+            }
+        }
+
+        /// <summary>
+        /// Changes font size of the selected text.
+        /// </summary>
+        /// <param name="stringFontSize">The new size, as a string</param>
         private void ChangeSelectedFontSize(string stringFontSize)
         {
             int fontSize;
@@ -352,6 +384,7 @@ namespace FinalProjectWinForms
             }
             Font myFont = new Font(rtb.SelectionFont.FontFamily, fontSize, rtb.SelectionFont.Style);
             rtb.SelectionFont = myFont;
+            SetFontSizeText();
             //rtb_SelectionChanged(rtb, new EventArgs());
 
         }

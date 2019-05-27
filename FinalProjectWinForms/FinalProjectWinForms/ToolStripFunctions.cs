@@ -311,8 +311,33 @@ namespace FinalProjectWinForms
 
         #endregion Font and background color
 
+        #region Font
 
+        /// <summary>
+        /// Handles the Click event of the tsFontType control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        private void toolStripFontType_Click(object sender, EventArgs e)
+        {
+            FontDialog fontDialog = new FontDialog();
+            fontDialog.Font = rtb.SelectionFont;
+            fontDialog.ShowColor = true;
+            if (fontDialog.ShowDialog() == DialogResult.OK)
+            {
+                rtb.SelectionFont = fontDialog.Font;
+                rtb.SelectionColor = fontDialog.Color;
+                SetFontButtonText();
+                
+            }
+        }
 
+        private void SetFontButtonText()
+        {
+            toolStripFontType.Text = rtb.SelectionFont.Name;
+        }
+
+        #endregion Font
 
         #region CheckAndUnCheckAllButtons
 

@@ -65,6 +65,8 @@
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.contextMenuStripUndo = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStripRedo = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripFontType = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStrip1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -104,7 +106,9 @@
             this.toolStripForegroundColor,
             this.toolStripBackgroundColor,
             this.toolStripSeparator5,
-            this.toolStripBullet});
+            this.toolStripBullet,
+            this.toolStripSeparator7,
+            this.toolStripFontType});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(800, 27);
@@ -409,6 +413,19 @@
             this.contextMenuStripRedo.Size = new System.Drawing.Size(103, 22);
             this.contextMenuStripRedo.Text = "Redo";
             // 
+            // toolStripFontType
+            // 
+            this.toolStripFontType.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripFontType.Name = "toolStripFontType";
+            this.toolStripFontType.Size = new System.Drawing.Size(61, 24);
+            this.toolStripFontType.Text = "Font type";
+            this.toolStripFontType.Click += new System.EventHandler(this.toolStripFontType_Click);
+            // 
+            // toolStripSeparator7
+            // 
+            this.toolStripSeparator7.Name = "toolStripSeparator7";
+            this.toolStripSeparator7.Size = new System.Drawing.Size(6, 27);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -467,6 +484,8 @@
         private System.Windows.Forms.ToolStripMenuItem contextMenuStripUndo;
         private System.Windows.Forms.ToolStripMenuItem contextMenuStripRedo;
         private System.Windows.Forms.ToolStripMenuItem toolStripSelectForegroundColor;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
+        private System.Windows.Forms.ToolStripButton toolStripFontType;
     }
 }
 

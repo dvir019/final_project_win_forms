@@ -311,7 +311,7 @@ namespace FinalProjectWinForms
 
         #endregion Font and background color
 
-        #region Font
+        #region Font and font size
 
         /// <summary>
         /// Handles the Click event of the tsFontType control.
@@ -328,16 +328,53 @@ namespace FinalProjectWinForms
                 rtb.SelectionFont = fontDialog.Font;
                 rtb.SelectionColor = fontDialog.Color;
                 SetFontButtonText();
-                
             }
         }
 
+        /// <summary>
+        /// Changes the size of the font type and.
+        /// </summary>
+        /// <param name="fontFamily">The font family.</param>
+        /// <param name="fontSize">Size of the font.</param>
+        private void ChangeSelectedFontSize(string stringFontSize)
+        {
+            int fontSize;
+            if (!int.TryParse(stringFontSize, out fontSize))
+            {
+                MessageBox.Show("This is not a valid number.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (fontSize < Constants.FONT_MIN_SIZE || fontSize > Constants.FONT_MAX_SIZE)
+            {
+                MessageBox.Show(string.Format("Font size must be an integer between {0} and {1}.", Constants.FONT_MIN_SIZE, Constants.FONT_MAX_SIZE), "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            Font myFont = new Font(rtb.SelectionFont.FontFamily, fontSize, rtb.SelectionFont.Style);
+            rtb.SelectionFont = myFont;
+            //rtb_SelectionChanged(rtb, new EventArgs());
+
+        }
+
+        /// <summary>
+        /// Sets the text of the font button in the toolStrip to match the selction font name.
+        /// </summary>
         private void SetFontButtonText()
         {
             toolStripFontType.Text = rtb.SelectionFont.Name;
         }
 
-        #endregion Font
+        /// <summary>
+        /// Sets the text of the font size button in the toolStrip to match the selction font size.
+        /// </summary>
+        private void SetFontSizeText()
+        {
+            int fontSize = (int)Math.Round(rtb.SelectionFont.Size);
+            toolStripFontSize.Text = fontSize.ToString();
+        }
+
+        #endregion Font and font size
+
 
         #region CheckAndUnCheckAllButtons
 
@@ -350,6 +387,8 @@ namespace FinalProjectWinForms
             CheckAndUncheckBulletButton();
             CheckAndUncheckStyleButtons();
             PaintColorButtons();
+            SetFontButtonText();
+            SetFontSizeText();
         }
 
         #endregion CheckAndUnCheckAllButtons

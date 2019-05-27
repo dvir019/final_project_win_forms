@@ -59,7 +59,10 @@ namespace FinalProjectWinForms
             if (rtb.CanUndo)
                 rtb.Undo();
             if (!rtb.CanUndo)
+            {
                 toolStripUndo.Enabled = false;
+                contextMenuStripUndo.Enabled = false;
+            }
         }
 
         /// <summary>
@@ -72,7 +75,10 @@ namespace FinalProjectWinForms
             if (rtb.CanRedo)
                 rtb.Redo();
             if (!rtb.CanRedo)
+            {
                 toolStripRedo.Enabled = false;
+                contextMenuStripRedo.Enabled = false;
+            }
         }
 
         #endregion Undo/Redo
@@ -145,7 +151,6 @@ namespace FinalProjectWinForms
 
             rtb.SelectionFont = new Font(rtb.SelectionFont, newFontStyle);
             CheckAndUncheckStyleButtons();
-            //rtb_SelectionChanged(rtb, new EventArgs());
         }
 
         private void CheckAndUncheckStyleButtons()
@@ -173,7 +178,6 @@ namespace FinalProjectWinForms
         {
             rtb.SelectionAlignment = HorizontalAlignment.Left;
             CheckAndUncheckAlignmentButtons();
-            //rtb_SelectionChanged(rtb, new EventArgs());
         }
 
         /// <summary>
@@ -185,7 +189,6 @@ namespace FinalProjectWinForms
         {
             rtb.SelectionAlignment = HorizontalAlignment.Center;
             CheckAndUncheckAlignmentButtons();
-            //rtb_SelectionChanged(rtb, new EventArgs());
         }
 
         /// <summary>
@@ -197,7 +200,6 @@ namespace FinalProjectWinForms
         {
             rtb.SelectionAlignment = HorizontalAlignment.Right;
             CheckAndUncheckAlignmentButtons();
-            //rtb_SelectionChanged(rtb, new EventArgs());
         }
 
         private void CheckAndUncheckAlignmentButtons()
@@ -221,7 +223,6 @@ namespace FinalProjectWinForms
         {
             rtb.SelectionBullet = !rtb.SelectionBullet;
             CheckAndUncheckBulletButton();
-            //rtb_SelectionChanged(rtb, new EventArgs());
         }
 
         private void CheckAndUncheckBulletButton()
@@ -230,6 +231,78 @@ namespace FinalProjectWinForms
         }
 
         #endregion Bullet management
+
+
+        #region Font and background color
+
+        /// <summary>
+        /// Handles the Click event of the toolStripForegroundColor button.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        private void toolStripForegroundColor_Click(object sender, EventArgs e)
+        {
+            rtb.SelectionColor = toolStripForegroundColor.BackColor;
+        }
+
+        /// <summary>
+        /// Handles the Click event of the toolStripBackgroundColor button.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        private void toolStripBackgroundColor_Click(object sender, EventArgs e)
+        {
+            rtb.SelectionBackColor = toolStripBackgroundColor.BackColor;
+        }
+
+        /// <summary>
+        /// Handles the Click event of the toolStripSelectForegroundColor button.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        private void toolStripSelectForegroundColor_Click(object sender, EventArgs e)
+        {
+            ColorDialog colorDialog = new ColorDialog();
+            colorDialog.Color = rtb.SelectionColor;
+            if (colorDialog.ShowDialog() == DialogResult.OK)
+            {
+                rtb.SelectionColor = colorDialog.Color;
+                PaintColorButtons();
+            }
+        }
+
+        /// <summary>
+        /// Handles the Click event of the toolStripSelectBackgroundColor button.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        private void toolStripSelectBackgroundColor_Click(object sender, EventArgs e)
+        {
+            ColorDialog colorDialog = new ColorDialog();
+            colorDialog.Color = rtb.SelectionBackColor;
+            if (colorDialog.ShowDialog() == DialogResult.OK)
+            {
+                rtb.SelectionBackColor = colorDialog.Color;
+                PaintColorButtons();
+            }
+        }
+
+        /// <summary>
+        /// Sets the colors of the color buttons in the toolStrip to match the selction color.
+        /// </summary>
+        private void PaintColorButtons()
+        {
+            Color selectionColor = rtb.SelectionColor;
+            Color selectionBackfroundColor = rtb.SelectionBackColor;
+            toolStripBackgroundColor.BackColor = selectionBackfroundColor;
+            toolStripBackgroundColor.ForeColor = selectionBackfroundColor;
+            toolStripForegroundColor.BackColor = selectionColor;
+            toolStripForegroundColor.ForeColor = selectionColor;
+        }
+
+        #endregion Font and background color
+
+
 
 
         #region CheckAndUnCheckAllButtons

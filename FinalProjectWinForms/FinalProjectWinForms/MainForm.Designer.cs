@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripNew = new System.Windows.Forms.ToolStripButton();
@@ -51,13 +52,21 @@
             this.toolStripRight = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripForegroundColor = new System.Windows.Forms.ToolStripDropDownButton();
-            this.tsSelectFontColor = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSelectForegroundColor = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripBackgroundColor = new System.Windows.Forms.ToolStripDropDownButton();
-            this.tsSelectBackgroundColor = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSelectBackgroundColor = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripBullet = new System.Windows.Forms.ToolStripButton();
             this.rtb = new System.Windows.Forms.RichTextBox();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.contextMenuStripCut = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStripCopy = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStripPaste = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
+            this.contextMenuStripUndo = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStripRedo = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -286,37 +295,41 @@
             // 
             this.toolStripForegroundColor.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.toolStripForegroundColor.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsSelectFontColor});
+            this.toolStripSelectForegroundColor});
             this.toolStripForegroundColor.Image = global::FinalProjectWinForms.Properties.Resources.forecolor;
             this.toolStripForegroundColor.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripForegroundColor.Name = "toolStripForegroundColor";
             this.toolStripForegroundColor.Size = new System.Drawing.Size(33, 24);
             this.toolStripForegroundColor.Text = "    ";
             this.toolStripForegroundColor.ToolTipText = "Foreground color";
+            this.toolStripForegroundColor.Click += new System.EventHandler(this.toolStripForegroundColor_Click);
             // 
-            // tsSelectFontColor
+            // toolStripSelectForegroundColor
             // 
-            this.tsSelectFontColor.Name = "tsSelectFontColor";
-            this.tsSelectFontColor.Size = new System.Drawing.Size(144, 22);
-            this.tsSelectFontColor.Text = "Select color...";
+            this.toolStripSelectForegroundColor.Name = "toolStripSelectForegroundColor";
+            this.toolStripSelectForegroundColor.Size = new System.Drawing.Size(144, 22);
+            this.toolStripSelectForegroundColor.Text = "Select color...";
+            this.toolStripSelectForegroundColor.Click += new System.EventHandler(this.toolStripSelectForegroundColor_Click);
             // 
             // toolStripBackgroundColor
             // 
             this.toolStripBackgroundColor.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.toolStripBackgroundColor.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsSelectBackgroundColor});
+            this.toolStripSelectBackgroundColor});
             this.toolStripBackgroundColor.Image = global::FinalProjectWinForms.Properties.Resources.backcolor;
             this.toolStripBackgroundColor.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripBackgroundColor.Name = "toolStripBackgroundColor";
             this.toolStripBackgroundColor.Size = new System.Drawing.Size(33, 24);
             this.toolStripBackgroundColor.Text = "    ";
             this.toolStripBackgroundColor.ToolTipText = "Background color";
+            this.toolStripBackgroundColor.Click += new System.EventHandler(this.toolStripBackgroundColor_Click);
             // 
-            // tsSelectBackgroundColor
+            // toolStripSelectBackgroundColor
             // 
-            this.tsSelectBackgroundColor.Name = "tsSelectBackgroundColor";
-            this.tsSelectBackgroundColor.Size = new System.Drawing.Size(144, 22);
-            this.tsSelectBackgroundColor.Text = "Select color...";
+            this.toolStripSelectBackgroundColor.Name = "toolStripSelectBackgroundColor";
+            this.toolStripSelectBackgroundColor.Size = new System.Drawing.Size(180, 22);
+            this.toolStripSelectBackgroundColor.Text = "Select color...";
+            this.toolStripSelectBackgroundColor.Click += new System.EventHandler(this.toolStripSelectBackgroundColor_Click);
             // 
             // toolStripSeparator5
             // 
@@ -344,6 +357,58 @@
             this.rtb.Text = "";
             this.rtb.WordWrap = false;
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.contextMenuStripCut,
+            this.contextMenuStripCopy,
+            this.contextMenuStripPaste,
+            this.toolStripSeparator6,
+            this.contextMenuStripUndo,
+            this.contextMenuStripRedo});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(104, 120);
+            // 
+            // contextMenuStripCut
+            // 
+            this.contextMenuStripCut.Image = global::FinalProjectWinForms.Properties.Resources.cut;
+            this.contextMenuStripCut.Name = "contextMenuStripCut";
+            this.contextMenuStripCut.Size = new System.Drawing.Size(103, 22);
+            this.contextMenuStripCut.Text = "Cut";
+            // 
+            // contextMenuStripCopy
+            // 
+            this.contextMenuStripCopy.Image = global::FinalProjectWinForms.Properties.Resources.copy;
+            this.contextMenuStripCopy.Name = "contextMenuStripCopy";
+            this.contextMenuStripCopy.Size = new System.Drawing.Size(103, 22);
+            this.contextMenuStripCopy.Text = "Copy";
+            // 
+            // contextMenuStripPaste
+            // 
+            this.contextMenuStripPaste.Image = global::FinalProjectWinForms.Properties.Resources.paste;
+            this.contextMenuStripPaste.Name = "contextMenuStripPaste";
+            this.contextMenuStripPaste.Size = new System.Drawing.Size(103, 22);
+            this.contextMenuStripPaste.Text = "Paste";
+            // 
+            // toolStripSeparator6
+            // 
+            this.toolStripSeparator6.Name = "toolStripSeparator6";
+            this.toolStripSeparator6.Size = new System.Drawing.Size(100, 6);
+            // 
+            // contextMenuStripUndo
+            // 
+            this.contextMenuStripUndo.Image = global::FinalProjectWinForms.Properties.Resources.undo;
+            this.contextMenuStripUndo.Name = "contextMenuStripUndo";
+            this.contextMenuStripUndo.Size = new System.Drawing.Size(103, 22);
+            this.contextMenuStripUndo.Text = "Undo";
+            // 
+            // contextMenuStripRedo
+            // 
+            this.contextMenuStripRedo.Image = global::FinalProjectWinForms.Properties.Resources.redo;
+            this.contextMenuStripRedo.Name = "contextMenuStripRedo";
+            this.contextMenuStripRedo.Size = new System.Drawing.Size(103, 22);
+            this.contextMenuStripRedo.Text = "Redo";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -358,6 +423,7 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -388,12 +454,19 @@
         private System.Windows.Forms.ToolStripButton toolStripRight;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripDropDownButton toolStripForegroundColor;
-        private System.Windows.Forms.ToolStripMenuItem tsSelectFontColor;
         private System.Windows.Forms.ToolStripDropDownButton toolStripBackgroundColor;
-        private System.Windows.Forms.ToolStripMenuItem tsSelectBackgroundColor;
+        private System.Windows.Forms.ToolStripMenuItem toolStripSelectBackgroundColor;
         private System.Windows.Forms.RichTextBox rtb;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.ToolStripButton toolStripBullet;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem contextMenuStripCut;
+        private System.Windows.Forms.ToolStripMenuItem contextMenuStripCopy;
+        private System.Windows.Forms.ToolStripMenuItem contextMenuStripPaste;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
+        private System.Windows.Forms.ToolStripMenuItem contextMenuStripUndo;
+        private System.Windows.Forms.ToolStripMenuItem contextMenuStripRedo;
+        private System.Windows.Forms.ToolStripMenuItem toolStripSelectForegroundColor;
     }
 }
 

@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace FinalProjectWinForms
 {
-    class ConnectOrHostEnum
+    public enum ConnectOrHost
     {
+        Connect,
+        Host
     }
 }

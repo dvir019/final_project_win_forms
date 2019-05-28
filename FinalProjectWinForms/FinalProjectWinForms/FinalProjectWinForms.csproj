@@ -46,6 +46,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConnectAndHostScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConnectAndHostScreen.Designer.cs">
+      <DependentUpon>ConnectAndHostScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConnectOrHostEnum.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="ContextMenuStripFunctions.cs">
       <SubType>Form</SubType>
@@ -61,6 +68,9 @@
     <Compile Include="ToolStripFunctions.cs">
       <SubType>Form</SubType>
     </Compile>
+    <EmbeddedResource Include="ConnectAndHostScreen.resx">
+      <DependentUpon>ConnectAndHostScreen.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>

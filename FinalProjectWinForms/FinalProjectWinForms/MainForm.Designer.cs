@@ -396,6 +396,7 @@
             this.rtb.TabIndex = 2;
             this.rtb.Text = "";
             this.rtb.WordWrap = false;
+            this.rtb.TextChanged += new System.EventHandler(this.rtb_TextChanged);
             // 
             // contextMenuStrip1
             // 

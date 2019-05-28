@@ -241,7 +241,6 @@ namespace FinalProjectWinForms
 
         #endregion Bullet management
 
-
         #region Font and background color
 
         /// <summary>
@@ -407,6 +406,7 @@ namespace FinalProjectWinForms
         }
 
         #endregion Font and font size
+
 
 
         #region CheckAndUnCheckAllButtons

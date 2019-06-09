@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.connectHostIp = new System.Windows.Forms.Label();
             this.connectNameLabel = new System.Windows.Forms.Label();
             this.connectNameTextBox = new System.Windows.Forms.TextBox();
             this.connectIpAddress = new System.Windows.Forms.TextBox();
@@ -40,7 +41,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.newRadioButton = new System.Windows.Forms.RadioButton();
             this.openRadioButton = new System.Windows.Forms.RadioButton();
-            this.connectHostIp = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -62,6 +62,15 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Connect";
             // 
+            // connectHostIp
+            // 
+            this.connectHostIp.AutoSize = true;
+            this.connectHostIp.Location = new System.Drawing.Point(10, 50);
+            this.connectHostIp.Name = "connectHostIp";
+            this.connectHostIp.Size = new System.Drawing.Size(83, 13);
+            this.connectHostIp.TabIndex = 8;
+            this.connectHostIp.Text = "Host IP Address";
+            // 
             // connectNameLabel
             // 
             this.connectNameLabel.AutoSize = true;
@@ -70,7 +79,6 @@
             this.connectNameLabel.Size = new System.Drawing.Size(35, 13);
             this.connectNameLabel.TabIndex = 7;
             this.connectNameLabel.Text = "Name";
-            this.connectNameLabel.Click += new System.EventHandler(this.label1_Click);
             // 
             // connectNameTextBox
             // 
@@ -174,15 +182,6 @@
             this.openRadioButton.Text = "Open Existing";
             this.openRadioButton.UseVisualStyleBackColor = true;
             // 
-            // connectHostIp
-            // 
-            this.connectHostIp.AutoSize = true;
-            this.connectHostIp.Location = new System.Drawing.Point(10, 50);
-            this.connectHostIp.Name = "connectHostIp";
-            this.connectHostIp.Size = new System.Drawing.Size(83, 13);
-            this.connectHostIp.TabIndex = 8;
-            this.connectHostIp.Text = "Host IP Address";
-            // 
             // ConnectAndHostScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -191,7 +190,8 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "ConnectAndHostScreen";
-            this.Text = "ConnectAndHostScreen";
+            this.Text = "Opening Screen";
+            this.Load += new System.EventHandler(this.ConnectAndHostScreen_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);

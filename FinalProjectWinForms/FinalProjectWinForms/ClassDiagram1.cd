@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="FinalProjectWinForms.ConnectAndHostScreen" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgABAAAAGAAAACAAhSAQCALAAAIAEAAAGACAQAAAAA=</HashCode>
+      <FileName>ConnectAndHostScreen.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinalProjectWinForms.Constants" Collapsed="true">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAABAAAAAAAEA=</HashCode>
+      <FileName>Constants.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinalProjectWinForms.MainForm" Collapsed="true">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EQABCP1QgCElAMhMOcCt4BVGQAAAUFGDkAQABQhMSBQ=</HashCode>
+      <FileName>ContextMenuStripFunctions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinalProjectWinForms.InputForm" Collapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CEACAAIAACYAAAAAAgCKAAACEAAAEAAAAAEAAAAAAAA=</HashCode>
+      <FileName>InputForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinalProjectWinForms.Program" Collapsed="true">
+    <Position X="2.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinalProjectWinForms.Properties.Resources" Collapsed="true">
+    <Position X="4" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAARAFACCAgAAQBCEhEAAAEQAAAAIAAKAAAQQAEIQ=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinalProjectWinForms.Properties.Settings" Collapsed="true">
+    <Position X="0.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="FinalProjectWinForms.ConnectOrHost" Collapsed="true">
+    <Position X="0.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAIAAAAAACAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ConnectOrHostEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

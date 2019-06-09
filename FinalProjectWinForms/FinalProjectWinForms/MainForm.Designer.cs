@@ -31,8 +31,6 @@
             this.components = new System.ComponentModel.Container();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripNew = new System.Windows.Forms.ToolStripButton();
-            this.toolStripOpen = new System.Windows.Forms.ToolStripButton();
             this.toolStripSave = new System.Windows.Forms.ToolStripButton();
             this.tsFileSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripCut = new System.Windows.Forms.ToolStripButton();
@@ -68,6 +66,7 @@
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.contextMenuStripUndo = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStripRedo = new System.Windows.Forms.ToolStripMenuItem();
+            this.lineColumnLabel = new System.Windows.Forms.Label();
             this.toolStrip1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -84,8 +83,6 @@
             // 
             this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripNew,
-            this.toolStripOpen,
             this.toolStripSave,
             this.tsFileSeparator,
             this.toolStripCut,
@@ -116,26 +113,6 @@
             this.toolStrip1.Size = new System.Drawing.Size(800, 27);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
-            // 
-            // toolStripNew
-            // 
-            this.toolStripNew.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripNew.Image = global::FinalProjectWinForms.Properties.Resources.newdocument;
-            this.toolStripNew.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripNew.ImageTransparentColor = System.Drawing.Color.Transparent;
-            this.toolStripNew.Name = "toolStripNew";
-            this.toolStripNew.Size = new System.Drawing.Size(24, 24);
-            this.toolStripNew.Text = "New";
-            // 
-            // toolStripOpen
-            // 
-            this.toolStripOpen.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripOpen.Image = global::FinalProjectWinForms.Properties.Resources.open;
-            this.toolStripOpen.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripOpen.ImageTransparentColor = System.Drawing.Color.Black;
-            this.toolStripOpen.Name = "toolStripOpen";
-            this.toolStripOpen.Size = new System.Drawing.Size(23, 24);
-            this.toolStripOpen.Text = "Open";
             // 
             // toolStripSave
             // 
@@ -396,7 +373,7 @@
             this.rtb.TabIndex = 2;
             this.rtb.Text = "";
             this.rtb.WordWrap = false;
-            this.rtb.TextChanged += new System.EventHandler(this.rtb_TextChanged);
+            this.rtb.SelectionChanged += new System.EventHandler(this.rtb_SelectionChanged);
             // 
             // contextMenuStrip1
             // 
@@ -450,11 +427,21 @@
             this.contextMenuStripRedo.Size = new System.Drawing.Size(103, 22);
             this.contextMenuStripRedo.Text = "Redo";
             // 
+            // lineColumnLabel
+            // 
+            this.lineColumnLabel.AutoSize = true;
+            this.lineColumnLabel.Location = new System.Drawing.Point(37, 445);
+            this.lineColumnLabel.Name = "lineColumnLabel";
+            this.lineColumnLabel.Size = new System.Drawing.Size(92, 13);
+            this.lineColumnLabel.TabIndex = 3;
+            this.lineColumnLabel.Text = "Line: 1, Column: 1";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 479);
+            this.Controls.Add(this.lineColumnLabel);
             this.Controls.Add(this.rtb);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.menuStrip1);
@@ -474,8 +461,6 @@
 
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton toolStripNew;
-        private System.Windows.Forms.ToolStripButton toolStripOpen;
         private System.Windows.Forms.ToolStripButton toolStripSave;
         private System.Windows.Forms.ToolStripSeparator tsFileSeparator;
         private System.Windows.Forms.ToolStripButton toolStripCut;
@@ -511,6 +496,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
         private System.Windows.Forms.ToolStripButton toolStripFontType;
         private System.Windows.Forms.ToolStripComboBox toolStripFontSize;
+        private System.Windows.Forms.Label lineColumnLabel;
     }
 }
 

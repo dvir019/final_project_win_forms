@@ -52,10 +52,22 @@
     <Compile Include="ConnectAndHostScreen.Designer.cs">
       <DependentUpon>ConnectAndHostScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="ConnectFunctions.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ConnectOrHostEnum.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="ContextMenuStripFunctions.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HostFunctions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InputForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InputForm.Designer.cs">
+      <DependentUpon>InputForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -71,6 +83,9 @@
     <EmbeddedResource Include="ConnectAndHostScreen.resx">
       <DependentUpon>ConnectAndHostScreen.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="InputForm.resx">
+      <DependentUpon>InputForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -84,6 +99,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -58,7 +58,15 @@ namespace FinalProjectWinForms
         #endregion send
 
         #region receive
-        private string ReceiveSomeChars(int amount)
+
+
+
+        /// <summary>
+        /// Receives a given amount of characters.
+        /// </summary>
+        /// <param name="amount">The amout of characters to receive</param>
+        /// <returns></returns>
+        private string ReceiveSomeCharacters(int amount)
         {
             byte[] data = new byte[amount];
             int bytes = stream.Read(data, 0, data.Length);
@@ -66,6 +74,20 @@ namespace FinalProjectWinForms
             return responseData;
         }
 
+        private void TextAdded(int myCursorBefore, int otherCursorBefore, int otherCursorAfter)
+        {
+            if (otherCursorBefore <= myCursorBefore)
+                rtb.SelectionStart = myCursorBefore + (otherCursorAfter - otherCursorBefore);
+        }
+
+        private void TextDeleted(int myCursorBefore, int otherCursorBefore, int otherCursorAfter)
+        {
+            if (myCursorBefore >= otherCursorBefore)
+                rtb.SelectionStart = myCursorBefore - (otherCursorBefore - otherCursorAfter);
+            else if (myCursorBefore < otherCursorBefore && myCursorBefore > otherCursorAfter)
+                rtb.SelectionStart = otherCursorAfter;
+        }
+        
         #endregion receive
     }
 }

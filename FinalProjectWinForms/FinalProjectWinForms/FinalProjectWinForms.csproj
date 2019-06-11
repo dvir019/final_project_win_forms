@@ -46,6 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClientFunctions.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ConnectAndHostScreen.cs">
       <SubType>Form</SubType>
     </Compile>

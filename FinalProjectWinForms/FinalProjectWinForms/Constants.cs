@@ -17,5 +17,9 @@ namespace FinalProjectWinForms
 
         // File extensions
         public const string RTF_EXTENSION = ".rtf";
+
+        // Port limits
+        public const int PORT_MIN_VALUE = 1000;
+        public const int PORT_MAX_VALUE = 65535;
     }
 }

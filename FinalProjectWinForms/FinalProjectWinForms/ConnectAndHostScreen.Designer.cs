@@ -29,12 +29,16 @@
         private void InitializeComponent()
         {
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.connectHostIp = new System.Windows.Forms.Label();
+            this.connectPortLabel = new System.Windows.Forms.Label();
+            this.connectPortTextBox = new System.Windows.Forms.TextBox();
+            this.connectHostIpLabel = new System.Windows.Forms.Label();
             this.connectNameLabel = new System.Windows.Forms.Label();
             this.connectNameTextBox = new System.Windows.Forms.TextBox();
             this.connectIpAddress = new System.Windows.Forms.TextBox();
             this.connectButton = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.hostPortLabel = new System.Windows.Forms.Label();
+            this.hostPortTextBox = new System.Windows.Forms.TextBox();
             this.hostNameLabel = new System.Windows.Forms.Label();
             this.hostNameTextBox = new System.Windows.Forms.TextBox();
             this.hostButton = new System.Windows.Forms.Button();
@@ -48,7 +52,9 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.connectHostIp);
+            this.groupBox2.Controls.Add(this.connectPortLabel);
+            this.groupBox2.Controls.Add(this.connectPortTextBox);
+            this.groupBox2.Controls.Add(this.connectHostIpLabel);
             this.groupBox2.Controls.Add(this.connectNameLabel);
             this.groupBox2.Controls.Add(this.connectNameTextBox);
             this.groupBox2.Controls.Add(this.connectIpAddress);
@@ -57,24 +63,40 @@
             this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox2.Size = new System.Drawing.Size(242, 163);
+            this.groupBox2.Size = new System.Drawing.Size(242, 175);
             this.groupBox2.TabIndex = 9;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Connect";
             // 
-            // connectHostIp
+            // connectPortLabel
             // 
-            this.connectHostIp.AutoSize = true;
-            this.connectHostIp.Location = new System.Drawing.Point(10, 50);
-            this.connectHostIp.Name = "connectHostIp";
-            this.connectHostIp.Size = new System.Drawing.Size(83, 13);
-            this.connectHostIp.TabIndex = 8;
-            this.connectHostIp.Text = "Host IP Address";
+            this.connectPortLabel.AutoSize = true;
+            this.connectPortLabel.Location = new System.Drawing.Point(37, 96);
+            this.connectPortLabel.Name = "connectPortLabel";
+            this.connectPortLabel.Size = new System.Drawing.Size(26, 13);
+            this.connectPortLabel.TabIndex = 10;
+            this.connectPortLabel.Text = "Port";
+            // 
+            // connectPortTextBox
+            // 
+            this.connectPortTextBox.Location = new System.Drawing.Point(98, 93);
+            this.connectPortTextBox.Name = "connectPortTextBox";
+            this.connectPortTextBox.Size = new System.Drawing.Size(122, 20);
+            this.connectPortTextBox.TabIndex = 9;
+            // 
+            // connectHostIpLabel
+            // 
+            this.connectHostIpLabel.AutoSize = true;
+            this.connectHostIpLabel.Location = new System.Drawing.Point(10, 70);
+            this.connectHostIpLabel.Name = "connectHostIpLabel";
+            this.connectHostIpLabel.Size = new System.Drawing.Size(83, 13);
+            this.connectHostIpLabel.TabIndex = 8;
+            this.connectHostIpLabel.Text = "Host IP Address";
             // 
             // connectNameLabel
             // 
             this.connectNameLabel.AutoSize = true;
-            this.connectNameLabel.Location = new System.Drawing.Point(43, 100);
+            this.connectNameLabel.Location = new System.Drawing.Point(32, 45);
             this.connectNameLabel.Name = "connectNameLabel";
             this.connectNameLabel.Size = new System.Drawing.Size(35, 13);
             this.connectNameLabel.TabIndex = 7;
@@ -82,14 +104,14 @@
             // 
             // connectNameTextBox
             // 
-            this.connectNameTextBox.Location = new System.Drawing.Point(84, 97);
+            this.connectNameTextBox.Location = new System.Drawing.Point(98, 43);
             this.connectNameTextBox.Name = "connectNameTextBox";
-            this.connectNameTextBox.Size = new System.Drawing.Size(100, 20);
+            this.connectNameTextBox.Size = new System.Drawing.Size(122, 20);
             this.connectNameTextBox.TabIndex = 6;
             // 
             // connectIpAddress
             // 
-            this.connectIpAddress.Location = new System.Drawing.Point(98, 48);
+            this.connectIpAddress.Location = new System.Drawing.Point(98, 68);
             this.connectIpAddress.Margin = new System.Windows.Forms.Padding(2);
             this.connectIpAddress.Name = "connectIpAddress";
             this.connectIpAddress.Size = new System.Drawing.Size(122, 20);
@@ -97,7 +119,7 @@
             // 
             // connectButton
             // 
-            this.connectButton.Location = new System.Drawing.Point(82, 129);
+            this.connectButton.Location = new System.Drawing.Point(82, 141);
             this.connectButton.Margin = new System.Windows.Forms.Padding(2);
             this.connectButton.Name = "connectButton";
             this.connectButton.Size = new System.Drawing.Size(75, 19);
@@ -108,6 +130,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.hostPortLabel);
+            this.groupBox1.Controls.Add(this.hostPortTextBox);
             this.groupBox1.Controls.Add(this.hostNameLabel);
             this.groupBox1.Controls.Add(this.hostNameTextBox);
             this.groupBox1.Controls.Add(this.hostButton);
@@ -116,15 +140,31 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Size = new System.Drawing.Size(242, 163);
+            this.groupBox1.Size = new System.Drawing.Size(242, 175);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Host";
             // 
+            // hostPortLabel
+            // 
+            this.hostPortLabel.AutoSize = true;
+            this.hostPortLabel.Location = new System.Drawing.Point(55, 116);
+            this.hostPortLabel.Name = "hostPortLabel";
+            this.hostPortLabel.Size = new System.Drawing.Size(26, 13);
+            this.hostPortLabel.TabIndex = 8;
+            this.hostPortLabel.Text = "Port";
+            // 
+            // hostPortTextBox
+            // 
+            this.hostPortTextBox.Location = new System.Drawing.Point(90, 113);
+            this.hostPortTextBox.Name = "hostPortTextBox";
+            this.hostPortTextBox.Size = new System.Drawing.Size(100, 20);
+            this.hostPortTextBox.TabIndex = 7;
+            // 
             // hostNameLabel
             // 
             this.hostNameLabel.AutoSize = true;
-            this.hostNameLabel.Location = new System.Drawing.Point(45, 100);
+            this.hostNameLabel.Location = new System.Drawing.Point(49, 90);
             this.hostNameLabel.Name = "hostNameLabel";
             this.hostNameLabel.Size = new System.Drawing.Size(35, 13);
             this.hostNameLabel.TabIndex = 6;
@@ -132,14 +172,14 @@
             // 
             // hostNameTextBox
             // 
-            this.hostNameTextBox.Location = new System.Drawing.Point(86, 97);
+            this.hostNameTextBox.Location = new System.Drawing.Point(90, 87);
             this.hostNameTextBox.Name = "hostNameTextBox";
             this.hostNameTextBox.Size = new System.Drawing.Size(100, 20);
             this.hostNameTextBox.TabIndex = 5;
             // 
             // hostButton
             // 
-            this.hostButton.Location = new System.Drawing.Point(90, 128);
+            this.hostButton.Location = new System.Drawing.Point(90, 140);
             this.hostButton.Margin = new System.Windows.Forms.Padding(2);
             this.hostButton.Name = "hostButton";
             this.hostButton.Size = new System.Drawing.Size(56, 19);
@@ -152,7 +192,7 @@
             // 
             this.panel1.Controls.Add(this.newRadioButton);
             this.panel1.Controls.Add(this.openRadioButton);
-            this.panel1.Location = new System.Drawing.Point(31, 25);
+            this.panel1.Location = new System.Drawing.Point(31, 17);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(175, 60);
@@ -216,6 +256,10 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.RadioButton newRadioButton;
         private System.Windows.Forms.RadioButton openRadioButton;
-        private System.Windows.Forms.Label connectHostIp;
+        private System.Windows.Forms.Label connectHostIpLabel;
+        private System.Windows.Forms.Label connectPortLabel;
+        private System.Windows.Forms.TextBox connectPortTextBox;
+        private System.Windows.Forms.Label hostPortLabel;
+        private System.Windows.Forms.TextBox hostPortTextBox;
     }
 }

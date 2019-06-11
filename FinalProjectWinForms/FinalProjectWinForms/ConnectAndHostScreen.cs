@@ -35,27 +35,43 @@ namespace FinalProjectWinForms
             {
                 if (connectNameTextBox.Text == "" || !connectNameTextBox.Text.All(char.IsLetterOrDigit))
                 {
-                    MessageBox.Show("Choose a valid name, with only letters ot digits!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Choose a valid name, contains only letters ot digits!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return false;
                 }
                 return true;
             }
             if (hostNameTextBox.Text == "" || !hostNameTextBox.Text.All(char.IsLetterOrDigit))
             {
-                MessageBox.Show("Choose a valid name, with only letters ot digits!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Choose a valid name, contains only letters ot digits!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
             return true;
         }
 
-
-        private void connectButton_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Checks if the port entered is valid.
+        /// </summary>
+        /// <param name="connectOrHost">Connect or host</param>
+        /// <returns>true if it's valid, else false</returns>
+        private bool CheckPort(ConnectOrHost connectOrHost)
         {
-            if (!CheckName(ConnectOrHost.Connect))
-                return;
-            ConnectToServer();
-
+            if (connectOrHost == ConnectOrHost.Connect)
+            {
+                int connectPort;
+                bool isConnectPortNumber = int.TryParse(connectPortTextBox.Text, out connectPort);
+                if (isConnectPortNumber && connectPort >= Constants.PORT_MIN_VALUE && connectPort <= Constants.PORT_MAX_VALUE)
+                    return true;
+                MessageBox.Show(string.Format("Choose a valid port, a number between {0}-{1}", Constants.PORT_MIN_VALUE, Constants.PORT_MAX_VALUE), "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            int hostPort;
+            bool isHostPortNumber = int.TryParse(connectPortTextBox.Text, out hostPort);
+            if (isHostPortNumber && hostPort >= Constants.PORT_MIN_VALUE && hostPort <= Constants.PORT_MAX_VALUE)
+                return true;
+            MessageBox.Show(string.Format("Choose a valid port, a number between {0}-{1}", Constants.PORT_MIN_VALUE, Constants.PORT_MAX_VALUE), "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            return false;
         }
+
 
 
         private void ConnectAndHostScreen_Load(object sender, EventArgs e)

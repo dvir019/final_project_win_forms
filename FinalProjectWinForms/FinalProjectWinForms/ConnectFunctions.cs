@@ -21,11 +21,15 @@ namespace FinalProjectWinForms
                 return;
             if (!CheckIpAddress())
                 return;
-            if (!CheckPort(ConnectOrHost.Connect))
+            int port;
+            if (!CheckPort(ConnectOrHost.Connect, out port))
                 return;
             if (!ConnectToServer())
                 return;
-
+            MainForm mainForm = new MainForm(ConnectOrHost.Connect, connectIpAddress.Text, port, tcpClient, connectNameTextBox.Text);
+            mainForm.Closed += (s, args) => Close();
+            mainForm.Show();
+            Hide();
         }
 
         private bool ConnectToServer()

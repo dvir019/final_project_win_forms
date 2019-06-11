@@ -21,5 +21,8 @@ namespace FinalProjectWinForms
         // Port limits
         public const int PORT_MIN_VALUE = 1000;
         public const int PORT_MAX_VALUE = 65535;
+
+        // IP
+        public const string MY_IP = "127.0.0.1";
     }
 }

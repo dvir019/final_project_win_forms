@@ -18,14 +18,16 @@ namespace FinalProjectWinForms
         {
             if (!CheckName(ConnectOrHost.Host))
                 return;
+            int port;
+            if (!CheckPort(ConnectOrHost.Host, out port))
+                return;
+            string path = "";
             if (newRadioButton.Checked)
-            {
-                NewFile();
-            }
+                path = NewFile();
             else if (openRadioButton.Checked)
-            {
-                OpenFile();
-            }
+                path = OpenFile();
+            if (path == "")
+                return;
         }
 
         private string SelectFolder()
@@ -36,14 +38,19 @@ namespace FinalProjectWinForms
             return "";
         }
 
-        private void NewFile()
+        private string NewFile()
         {
             string folder = SelectFolder();
             if (folder == "")
-                return;
+                return "";
             InputForm inputForm = new InputForm(folder);
             if (inputForm.ShowDialog() == DialogResult.OK)
-                File.Create(inputForm.FullPath);
+            {
+                string fullPath = inputForm.FullPath;
+                File.Create(fullPath);
+                return fullPath;
+            }
+            return "";
         }
 
         private string OpenFile()

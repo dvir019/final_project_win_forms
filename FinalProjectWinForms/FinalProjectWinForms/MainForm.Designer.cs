@@ -374,6 +374,7 @@
             this.rtb.Text = "";
             this.rtb.WordWrap = false;
             this.rtb.SelectionChanged += new System.EventHandler(this.rtb_SelectionChanged);
+            this.rtb.TextChanged += new System.EventHandler(this.rtb_TextChanged);
             // 
             // contextMenuStrip1
             // 

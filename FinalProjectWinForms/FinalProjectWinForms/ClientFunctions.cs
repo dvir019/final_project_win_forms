@@ -14,6 +14,8 @@ namespace FinalProjectWinForms
     public partial class MainForm : Form
     {
         private string previousText;
+        private bool serverChange;
+        private bool stopAll;
         
         #region send
 
@@ -25,6 +27,7 @@ namespace FinalProjectWinForms
             string messageWithoutLength = string.Format("{0},{1},{2}", name, GetBeforeAndAfter(), rtb.Rtf);
             int length = messageWithoutLength.Length;
             string message = string.Format("{0},{1}", length, messageWithoutLength);
+            SendMessage(message);
         }
 
         /// <summary>
@@ -65,7 +68,7 @@ namespace FinalProjectWinForms
         /// </summary>
         private void ReceiveAllTime()
         {
-            while (true)
+            while (!stopAll)
                 ReciveAndUpdate();
         }
 
@@ -89,7 +92,10 @@ namespace FinalProjectWinForms
             int otherCursorAfter = int.Parse(afterAsString);
             int myCursorBefore = rtb.SelectionStart;
 
+            serverChange = true;
             rtb.Rtf = newRtf;
+            serverChange = false;
+
             if (otherCursorBefore < otherCursorAfter)  // Text was added
                 TextAdded(myCursorBefore, otherCursorBefore, otherCursorAfter);
             else if (otherCursorBefore > otherCursorAfter)  // Text was deleted
@@ -135,8 +141,17 @@ namespace FinalProjectWinForms
         /// <param name="otherCursorAfter">The other user cursor after the change</param>
         private void TextAdded(int myCursorBefore, int otherCursorBefore, int otherCursorAfter)
         {
+            MessageBox.Show("Added!");
             if (otherCursorBefore <= myCursorBefore)
+            {
                 rtb.SelectionStart = myCursorBefore + (otherCursorAfter - otherCursorBefore);
+                MessageBox.Show(string.Format("Added and moved, {0}->{1}",myCursorBefore, rtb.SelectionStart));
+            }
+            else
+            {
+                rtb.SelectionStart = myCursorBefore;
+                MessageBox.Show(string.Format("Added NOT moved, {0}->{1}", myCursorBefore, rtb.SelectionStart));
+            }
         }
 
         /// <summary>
@@ -147,10 +162,22 @@ namespace FinalProjectWinForms
         /// <param name="otherCursorAfter">The other user cursor after the change</param>
         private void TextDeleted(int myCursorBefore, int otherCursorBefore, int otherCursorAfter)
         {
+            MessageBox.Show("Deleted!");
             if (myCursorBefore >= otherCursorBefore)
+            {
                 rtb.SelectionStart = myCursorBefore - (otherCursorBefore - otherCursorAfter);
+                MessageBox.Show(string.Format("Deleted and moved if [1], {0}->{1}", myCursorBefore, rtb.SelectionStart));
+            }
             else if (myCursorBefore < otherCursorBefore && myCursorBefore > otherCursorAfter)
+            {
                 rtb.SelectionStart = otherCursorAfter;
+                MessageBox.Show(string.Format("Deleted and moved if [2], {0}->{1}", myCursorBefore, rtb.SelectionStart));
+            }
+            else
+            {
+                rtb.SelectionStart = myCursorBefore;
+                MessageBox.Show(string.Format("Deleted NOT moved, {0}->{1}", myCursorBefore, rtb.SelectionStart));
+            }
         }
 
         #endregion receive
@@ -164,8 +191,24 @@ namespace FinalProjectWinForms
         {
             stream.Close();
             client.Close();
+            stopAll = true;
         }
 
         #endregion close
+
+        #region error
+
+        private void Error()
+        {
+            string message = "Unable to connect to server\nTry to connect again?\n";
+            if (connectOrHost == ConnectOrHost.Connect)
+                message += "If you choose no, the program will be closed.";
+            else if (connectOrHost == ConnectOrHost.Host)
+                message += "If you choose no, you will be able to save the file and then the program will be closed";
+            DialogResult result = MessageBox.Show("Unable to connect to server\nTry to connect again?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+
+        }
+
+        #endregion error
     }
 }

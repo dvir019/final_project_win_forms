@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Net.Sockets;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -20,6 +21,8 @@ namespace FinalProjectWinForms
         private NetworkStream stream;
         private string name;
         private string filePath;
+
+        private Thread receiveThread;
 
 
         /// <summary>
@@ -41,6 +44,13 @@ namespace FinalProjectWinForms
             this.filePath = filePath;
             stream = client.GetStream();
             ip = Constants.MY_IP;
+
+            previousText = "";
+            serverChange = false;
+            receiveThread = new Thread(ReceiveAllTime);
+            stopAll = false;
+
+            CheckForIllegalCrossThreadCalls = false;
         }
 
         /// <summary>
@@ -59,7 +69,8 @@ namespace FinalProjectWinForms
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            receiveThread.Start();
+            Closed += (s, args) => CloseSockets();
         }
 
 
@@ -69,6 +80,13 @@ namespace FinalProjectWinForms
             int column = 1 + rtb.SelectionStart - rtb.GetFirstCharIndexOfCurrentLine();
             lineColumnLabel.Text = string.Format("Line: {0}, Column: {1}", line, column);
             UpdateToolStripButtonsAndComboBoxes();
+        }
+
+        private void rtb_TextChanged(object sender, EventArgs e)
+        {
+            if (!serverChange)
+                ConstructAndSend();
+            previousText = rtb.Text;
         }
     }
 }

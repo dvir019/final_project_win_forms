@@ -67,8 +67,12 @@
             this.contextMenuStripUndo = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStripRedo = new System.Windows.Forms.ToolStripMenuItem();
             this.lineColumnLabel = new System.Windows.Forms.Label();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.statusStripLineColumn = new System.Windows.Forms.ToolStripStatusLabel();
+            this.statusBarIpPort = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStrip1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -368,9 +372,10 @@
             // rtb
             // 
             this.rtb.BulletIndent = 15;
-            this.rtb.Location = new System.Drawing.Point(48, 54);
+            this.rtb.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rtb.Location = new System.Drawing.Point(0, 51);
             this.rtb.Name = "rtb";
-            this.rtb.Size = new System.Drawing.Size(728, 384);
+            this.rtb.Size = new System.Drawing.Size(800, 428);
             this.rtb.TabIndex = 2;
             this.rtb.Text = "";
             this.rtb.WordWrap = false;
@@ -432,17 +437,40 @@
             // lineColumnLabel
             // 
             this.lineColumnLabel.AutoSize = true;
-            this.lineColumnLabel.Location = new System.Drawing.Point(37, 445);
+            this.lineColumnLabel.Location = new System.Drawing.Point(790, 444);
             this.lineColumnLabel.Name = "lineColumnLabel";
-            this.lineColumnLabel.Size = new System.Drawing.Size(92, 13);
+            this.lineColumnLabel.Size = new System.Drawing.Size(10, 13);
             this.lineColumnLabel.TabIndex = 3;
-            this.lineColumnLabel.Text = "Line: 1, Column: 1";
+            this.lineColumnLabel.Text = " ";
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.statusStripLineColumn,
+            this.statusBarIpPort});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 457);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(800, 22);
+            this.statusStrip1.TabIndex = 4;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // statusStripLineColumn
+            // 
+            this.statusStripLineColumn.Name = "statusStripLineColumn";
+            this.statusStripLineColumn.Size = new System.Drawing.Size(102, 17);
+            this.statusStripLineColumn.Text = "Line: 1, Column: 1";
+            // 
+            // statusBarIpPort
+            // 
+            this.statusBarIpPort.Name = "statusBarIpPort";
+            this.statusBarIpPort.Size = new System.Drawing.Size(0, 17);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 479);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.lineColumnLabel);
             this.Controls.Add(this.rtb);
             this.Controls.Add(this.toolStrip1);
@@ -454,6 +482,8 @@
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.contextMenuStrip1.ResumeLayout(false);
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -499,6 +529,9 @@
         private System.Windows.Forms.ToolStripButton toolStripFontType;
         private System.Windows.Forms.ToolStripComboBox toolStripFontSize;
         private System.Windows.Forms.Label lineColumnLabel;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel statusStripLineColumn;
+        private System.Windows.Forms.ToolStripStatusLabel statusBarIpPort;
     }
 }
 

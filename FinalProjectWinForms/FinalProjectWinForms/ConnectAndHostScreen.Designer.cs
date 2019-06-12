@@ -229,6 +229,9 @@
             this.ClientSize = new System.Drawing.Size(531, 236);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "ConnectAndHostScreen";
             this.Text = "Opening Screen";
             this.Load += new System.EventHandler(this.ConnectAndHostScreen_Load);

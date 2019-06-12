@@ -32,7 +32,7 @@ namespace FinalProjectWinForms
             if (path == "")
                 return;
 
-            Process pythonProcess = PythonProcess();
+            Process pythonProcess = PythonProcess(port);
 
             if (!ConnectToPython(port))
             {
@@ -43,7 +43,6 @@ namespace FinalProjectWinForms
 
             MainForm mainForm = new MainForm(ConnectOrHost.Host, port, tcpClient, hostNameTextBox.Text, path, pythonProcess);
             mainForm.Closed += (s, args) => Close();
-            mainForm.Closed += (s, args) => { pythonProcess.Kill(); };//} MessageBox.Show("KILLED HIM!");};
             mainForm.Show();
             Hide();
         }
@@ -98,10 +97,11 @@ namespace FinalProjectWinForms
             return "";
         }
 
-        private Process PythonProcess()
+        private Process PythonProcess(int port)
         {
             Process pythonProcess = new Process();
             pythonProcess.StartInfo = new ProcessStartInfo(@"C:\Users\Horim\Desktop\forScreenshots.py");
+            pythonProcess.StartInfo.Arguments = port.ToString();
             pythonProcess.Start();
             Thread.Sleep(10);
             return pythonProcess;

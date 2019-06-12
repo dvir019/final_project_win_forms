@@ -76,7 +76,10 @@ namespace FinalProjectWinForms
             Closed += (s, args) => CloseSockets();
 
             if (connectOrHost == ConnectOrHost.Host)
+            {
                 rtb.LoadFile(filePath);
+                statusBarIpPort.Text = string.Format("Ip: {0}, Port: {1}", GetLocalIPAddress(), port);
+            }
 
             else
                 DisableSaveButton();
@@ -87,7 +90,7 @@ namespace FinalProjectWinForms
         {
             int line = 1 + rtb.GetLineFromCharIndex(rtb.GetFirstCharIndexOfCurrentLine());
             int column = 1 + rtb.SelectionStart - rtb.GetFirstCharIndexOfCurrentLine();
-            lineColumnLabel.Text = string.Format("Line: {0}, Column: {1}", line, column);
+            statusStripLineColumn.Text = string.Format("Line: {0}, Column: {1}", line, column);
             UpdateToolStripButtonsAndComboBoxes();
         }
 

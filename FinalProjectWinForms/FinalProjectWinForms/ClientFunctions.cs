@@ -4,8 +4,10 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -27,7 +29,6 @@ namespace FinalProjectWinForms
             string messageWithoutLength = string.Format("{0},{1},{2}", name, GetBeforeAndAfter(), rtb.Rtf);
             int length = messageWithoutLength.Length;
             string message = string.Format("{0},{1}", length, messageWithoutLength);
-            MessageBox.Show(string.Format("length: {0}, len: {1}", length, message.Length));
             SendMessage(message);
         }
 
@@ -56,7 +57,7 @@ namespace FinalProjectWinForms
             }
             catch
             {
-                
+                MessageBox.Show("ERROR SEND!!!");
             }
         }
         #endregion send
@@ -79,7 +80,18 @@ namespace FinalProjectWinForms
         private void ReciveAndUpdate()
         {
             long length = ReceiveLength();
+            if (length == -1)
+            {
+                Close();
+                return;
+            }
             string message = ReceiveSomeCharacters(length);
+            if (message=="bye")
+            {
+                MessageBox.Show("Host Disconnected", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Close();
+                return;
+            }
             int firstComma = message.IndexOf(',');
             int secondComma = message.IndexOf(',', firstComma + 1);
             int thirdComma = message.IndexOf(',', secondComma + 1);
@@ -99,6 +111,13 @@ namespace FinalProjectWinForms
             rtb.Rtf = newRtf;
             serverChange = false;
 
+            if (rtb.Text.Trim()=="")
+            {
+                rtb.Rtf = newRtf;
+                //MessageBox.Show("EMPTY!!!!!!");
+                //MessageBox.Show(string.Format("LEN: {0}\nrealLen: {1}\n{2}\n\n\nRTF:{3}\n\n\nreal RTF:\n{4}\n\nText: [{5}]", length, message.Length, message, newRtf, rtb.Rtf, rtb.Text));
+            }
+
             if (otherCursorBefore < otherCursorAfter)  // Text was added
                 TextAdded(myCursorBefore, selectionLength, otherCursorBefore, otherCursorAfter);
             else if (otherCursorBefore > otherCursorAfter)  // Text was deleted
@@ -115,12 +134,14 @@ namespace FinalProjectWinForms
         {
             string lengthAsString = "";
             string chunk = "";
-            while (chunk != ",")
+            while (chunk != ","&&chunk!= "ERROR")
             {
                 chunk = ReceiveSomeCharacters(1);
                 if (chunk != ",")
                     lengthAsString += chunk;
             }
+            if (chunk == "ERROR")
+                return -1;
             long length = long.Parse(lengthAsString);
             return length;
         }
@@ -132,10 +153,19 @@ namespace FinalProjectWinForms
         /// <returns></returns>
         private string ReceiveSomeCharacters(long amount)
         {
-            byte[] data = new byte[amount];
-            int bytes = stream.Read(data, 0, data.Length);
-            string responseData = Encoding.ASCII.GetString(data, 0, bytes);
-            return responseData;
+            try
+            {
+                byte[] data = new byte[amount];
+                int bytes = stream.Read(data, 0, data.Length);
+                string responseData = Encoding.ASCII.GetString(data, 0, bytes);
+                return responseData;
+            }
+            catch
+            {
+                //MessageBox.Show(string.Format("ERROR RECEIVE!!!, {0}", stopAll));
+                Close();
+                return "ERROR";
+            }
         }
 
         /// <summary>
@@ -206,12 +236,40 @@ namespace FinalProjectWinForms
         /// </summary>
         private void CloseSockets()
         {
+            if (connectOrHost == ConnectOrHost.Host)
+            {
+                SendMessage("3,bye");
+                Thread.Sleep(10);
+            }
+
+            stopAll = true;
+
             stream.Close();
             client.Close();
-            stopAll = true;
+
+            try
+            {
+                pythonProcess.Kill();
+            }
+            catch
+            {
+
+            }
         }
 
         #endregion close
+
+        public static string GetLocalIPAddress()
+        {
+            string localIP;
+            using (Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, 0))
+            {
+                socket.Connect("8.8.8.8", 65530);
+                IPEndPoint endPoint = socket.LocalEndPoint as IPEndPoint;
+                localIP = endPoint.Address.ToString();
+            }
+            return localIP;
+        }
 
         #region error
 

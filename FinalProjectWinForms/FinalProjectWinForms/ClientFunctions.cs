@@ -60,6 +60,33 @@ namespace FinalProjectWinForms
         #region receive
 
         /// <summary>
+        /// Receives data and updates the textBox according to it.
+        /// </summary>
+        private void ReciveAndUpdate()
+        {
+            long length = ReceiveLength();
+            string message = ReceiveSomeCharacters(length);
+            int firstComma = message.IndexOf(',');
+            int secondComma = message.IndexOf(',', firstComma + 1);
+            int thirdComma = message.IndexOf(',', secondComma + 1);
+
+            string name = message.Substring(0, firstComma);
+            string beforeAsString = message.Substring(firstComma + 1, secondComma - firstComma - 1);
+            string afterAsString = message.Substring(secondComma + 1, thirdComma - secondComma - 1);
+            string newRtf = message.Substring(thirdComma + 1);
+
+            int otherCursorBefore = int.Parse(beforeAsString);
+            int otherCursorAfter = int.Parse(afterAsString);
+            int myCursorBefore = rtb.SelectionStart;
+
+            rtb.Rtf = newRtf;
+            if (otherCursorBefore < otherCursorAfter)  // Text was added
+                TextAdded(myCursorBefore, otherCursorBefore, otherCursorAfter);
+            else if (otherCursorBefore > otherCursorAfter)  // Text was deleted
+                TextDeleted(myCursorBefore, otherCursorBefore, otherCursorAfter);
+        }
+
+        /// <summary>
         /// Receives the length of the message.
         /// </summary>
         /// <returns>The length of the message</returns>
@@ -82,7 +109,7 @@ namespace FinalProjectWinForms
         /// </summary>
         /// <param name="amount">The amout of characters to receive</param>
         /// <returns></returns>
-        private string ReceiveSomeCharacters(int amount)
+        private string ReceiveSomeCharacters(long amount)
         {
             byte[] data = new byte[amount];
             int bytes = stream.Read(data, 0, data.Length);

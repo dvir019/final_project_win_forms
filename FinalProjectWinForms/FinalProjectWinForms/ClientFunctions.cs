@@ -155,10 +155,17 @@ namespace FinalProjectWinForms
 
         #endregion receive
 
-        #region error
+        #region close
 
+        /// <summary>
+        /// Close the sockets
+        /// </summary>
+        private void CloseSockets()
+        {
+            stream.Close();
+            client.Close();
+        }
 
-
-        #endregion error
+        #endregion close
     }
 }

@@ -123,6 +123,7 @@
             this.toolStripSave.Name = "toolStripSave";
             this.toolStripSave.Size = new System.Drawing.Size(24, 24);
             this.toolStripSave.Text = "Save";
+            this.toolStripSave.Click += new System.EventHandler(this.toolStripSave_Click);
             // 
             // tsFileSeparator
             // 

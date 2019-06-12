@@ -407,7 +407,27 @@ namespace FinalProjectWinForms
 
         #endregion Font and font size
 
+        #region save
 
+        /// <summary>
+        /// Handles the Click event of the toolStripSave button.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        private void toolStripSave_Click(object sender, EventArgs e)
+        {
+            rtb.SaveFile(filePath);
+        }
+
+        /// <summary>
+        /// Disables the save button.
+        /// </summary>
+        private void DisableSaveButton()
+        {
+            toolStripSave.Enabled = false;
+        }
+
+        #endregion save and save as
 
         #region CheckAndUnCheckAllButtons
 

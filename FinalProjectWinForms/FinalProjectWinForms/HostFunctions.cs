@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net.Sockets;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -28,6 +31,37 @@ namespace FinalProjectWinForms
                 path = OpenFile();
             if (path == "")
                 return;
+
+            Process pythonProcess = PythonProcess();
+
+            if (!ConnectToPython(port))
+            {
+                MessageBox.Show("Test");
+                pythonProcess.Kill();
+                return;
+            }
+
+            MainForm mainForm = new MainForm(ConnectOrHost.Host, port, tcpClient, hostNameTextBox.Text, path, pythonProcess);
+            mainForm.Closed += (s, args) => Close();
+            mainForm.Closed += (s, args) => { pythonProcess.Kill(); };//} MessageBox.Show("KILLED HIM!");};
+            mainForm.Show();
+            Hide();
+        }
+
+        private bool ConnectToPython(int port)
+        {
+            try
+            {
+                TcpClient client = new TcpClient(Constants.MY_IP, port);
+                tcpClient = client;
+                networkStream = client.GetStream();
+                return true;
+            }
+            catch
+            {
+                MessageBox.Show("Can't connect to host", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
         }
 
         private string SelectFolder()
@@ -62,6 +96,15 @@ namespace FinalProjectWinForms
                 return fileDialog.FileName;
             }
             return "";
+        }
+
+        private Process PythonProcess()
+        {
+            Process pythonProcess = new Process();
+            pythonProcess.StartInfo = new ProcessStartInfo(@"C:\Users\Horim\Desktop\forScreenshots.py");
+            pythonProcess.Start();
+            Thread.Sleep(10);
+            return pythonProcess;
         }
     }
 }

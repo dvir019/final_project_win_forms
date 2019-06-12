@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Net.Sockets;
@@ -21,6 +22,7 @@ namespace FinalProjectWinForms
         private NetworkStream stream;
         private string name;
         private string filePath;
+        private Process pythonProcess;
 
         private Thread receiveThread;
 
@@ -34,7 +36,7 @@ namespace FinalProjectWinForms
         /// <param name="client">The TcpClient socket</param>
         /// <param name="name">The name of the user</param>
         /// <param name="filePath">The full path to the file</param>
-        public MainForm(ConnectOrHost connectOrHost, int port, TcpClient client, string name, string filePath)
+        public MainForm(ConnectOrHost connectOrHost, int port, TcpClient client, string name, string filePath, Process pythonProcess)
         {
             InitializeComponent();
             this.connectOrHost = connectOrHost;
@@ -44,6 +46,7 @@ namespace FinalProjectWinForms
             this.filePath = filePath;
             stream = client.GetStream();
             ip = Constants.MY_IP;
+            this.pythonProcess = pythonProcess;
 
             previousText = "";
             serverChange = false;
@@ -62,7 +65,7 @@ namespace FinalProjectWinForms
         /// <param name="port">The port</param>
         /// <param name="client">The TcpClient socket</param>
         /// <param name="name">The name of the user</param>
-        public MainForm(ConnectOrHost connectOrHost, string ip, int port, TcpClient client, string name) : this(connectOrHost, port, client, name, "")
+        public MainForm(ConnectOrHost connectOrHost, string ip, int port, TcpClient client, string name) : this(connectOrHost, port, client, name, "", null)
         {
             this.ip = ip;
         }
@@ -71,6 +74,12 @@ namespace FinalProjectWinForms
         {
             receiveThread.Start();
             Closed += (s, args) => CloseSockets();
+
+            if (connectOrHost == ConnectOrHost.Host)
+                rtb.LoadFile(filePath);
+
+            if (connectOrHost != ConnectOrHost.Host)
+                DisableSaveButton();
         }
 
 
@@ -88,5 +97,6 @@ namespace FinalProjectWinForms
                 ConstructAndSend();
             previousText = rtb.Text;
         }
+
     }
 }

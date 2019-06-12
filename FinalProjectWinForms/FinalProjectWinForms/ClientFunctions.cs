@@ -60,6 +60,16 @@ namespace FinalProjectWinForms
         #region receive
 
         /// <summary>
+        /// Waits all the time to receive data.
+        /// Once it received, it updates the textBox and the cursor.
+        /// </summary>
+        private void ReceiveAllTime()
+        {
+            while (true)
+                ReciveAndUpdate();
+        }
+
+        /// <summary>
         /// Receives data and updates the textBox according to it.
         /// </summary>
         private void ReciveAndUpdate()
@@ -142,7 +152,13 @@ namespace FinalProjectWinForms
             else if (myCursorBefore < otherCursorBefore && myCursorBefore > otherCursorAfter)
                 rtb.SelectionStart = otherCursorAfter;
         }
-        
+
         #endregion receive
+
+        #region error
+
+
+
+        #endregion error
     }
 }

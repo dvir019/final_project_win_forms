@@ -141,16 +141,16 @@ namespace FinalProjectWinForms
         /// <param name="otherCursorAfter">The other user cursor after the change</param>
         private void TextAdded(int myCursorBefore, int otherCursorBefore, int otherCursorAfter)
         {
-            MessageBox.Show("Added!");
-            if (otherCursorBefore <= myCursorBefore)
+            //MessageBox.Show("Added!");
+            if (otherCursorBefore < myCursorBefore)
             {
                 rtb.SelectionStart = myCursorBefore + (otherCursorAfter - otherCursorBefore);
-                MessageBox.Show(string.Format("Added and moved, {0}->{1}",myCursorBefore, rtb.SelectionStart));
+                //MessageBox.Show(string.Format("Added and moved, {0}->{1}",myCursorBefore, rtb.SelectionStart));
             }
             else
             {
                 rtb.SelectionStart = myCursorBefore;
-                MessageBox.Show(string.Format("Added NOT moved, {0}->{1}", myCursorBefore, rtb.SelectionStart));
+                //MessageBox.Show(string.Format("Added NOT moved, {0}->{1}", myCursorBefore, rtb.SelectionStart));
             }
         }
 
@@ -162,21 +162,21 @@ namespace FinalProjectWinForms
         /// <param name="otherCursorAfter">The other user cursor after the change</param>
         private void TextDeleted(int myCursorBefore, int otherCursorBefore, int otherCursorAfter)
         {
-            MessageBox.Show("Deleted!");
+            //MessageBox.Show("Deleted!");
             if (myCursorBefore >= otherCursorBefore)
             {
                 rtb.SelectionStart = myCursorBefore - (otherCursorBefore - otherCursorAfter);
-                MessageBox.Show(string.Format("Deleted and moved if [1], {0}->{1}", myCursorBefore, rtb.SelectionStart));
+                //MessageBox.Show(string.Format("Deleted and moved if [1], {0}->{1}", myCursorBefore, rtb.SelectionStart));
             }
             else if (myCursorBefore < otherCursorBefore && myCursorBefore > otherCursorAfter)
             {
                 rtb.SelectionStart = otherCursorAfter;
-                MessageBox.Show(string.Format("Deleted and moved if [2], {0}->{1}", myCursorBefore, rtb.SelectionStart));
+                //MessageBox.Show(string.Format("Deleted and moved if [2], {0}->{1}", myCursorBefore, rtb.SelectionStart));
             }
             else
             {
                 rtb.SelectionStart = myCursorBefore;
-                MessageBox.Show(string.Format("Deleted NOT moved, {0}->{1}", myCursorBefore, rtb.SelectionStart));
+                //MessageBox.Show(string.Format("Deleted NOT moved, {0}->{1}", myCursorBefore, rtb.SelectionStart));
             }
         }
 

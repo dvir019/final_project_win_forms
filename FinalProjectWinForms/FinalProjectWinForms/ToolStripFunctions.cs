@@ -92,7 +92,7 @@ namespace FinalProjectWinForms
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         private void toolStripBold_Click(object sender, EventArgs e)
         {
-            Font selectionFont = rtb.SelectionFont;
+            Font selectionFont = rtb.SelectionFont ?? rtb.Font;
             ChangeSelectedFontStyle(!selectionFont.Bold, selectionFont.Italic, selectionFont.Underline, selectionFont.Strikeout);
         }
 
@@ -103,7 +103,7 @@ namespace FinalProjectWinForms
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         private void toolStripItalic_Click(object sender, EventArgs e)
         {
-            Font selectionFont = rtb.SelectionFont;
+            Font selectionFont = rtb.SelectionFont ?? rtb.Font;
             ChangeSelectedFontStyle(selectionFont.Bold, !selectionFont.Italic, selectionFont.Underline, selectionFont.Strikeout);
         }
 
@@ -114,7 +114,7 @@ namespace FinalProjectWinForms
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         private void toolStripUnderline_Click(object sender, EventArgs e)
         {
-            Font selectionFont = rtb.SelectionFont;
+            Font selectionFont = rtb.SelectionFont ?? rtb.Font;
             ChangeSelectedFontStyle(selectionFont.Bold, selectionFont.Italic, !selectionFont.Underline, selectionFont.Strikeout);
         }
 
@@ -125,7 +125,7 @@ namespace FinalProjectWinForms
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         private void toolStripStrikeout_Click(object sender, EventArgs e)
         {
-            Font selectionFont = rtb.SelectionFont;
+            Font selectionFont = rtb.SelectionFont ?? rtb.Font;
             ChangeSelectedFontStyle(selectionFont.Bold, selectionFont.Italic, selectionFont.Underline, !selectionFont.Strikeout);
         }
 
@@ -149,7 +149,7 @@ namespace FinalProjectWinForms
             if (fontStrikeout)
                 newFontStyle |= FontStyle.Strikeout;
 
-            rtb.SelectionFont = new Font(rtb.SelectionFont, newFontStyle);
+            rtb.SelectionFont = new Font(rtb.SelectionFont ?? rtb.Font, newFontStyle);
             CheckAndUncheckStyleButtons();
         }
 
@@ -320,7 +320,7 @@ namespace FinalProjectWinForms
         private void toolStripFontType_Click(object sender, EventArgs e)
         {
             FontDialog fontDialog = new FontDialog();
-            fontDialog.Font = rtb.SelectionFont;
+            fontDialog.Font = rtb.SelectionFont ?? rtb.Font;
             fontDialog.ShowColor = true;
             if (fontDialog.ShowDialog() == DialogResult.OK)
             {
@@ -381,7 +381,8 @@ namespace FinalProjectWinForms
                 MessageBox.Show(string.Format("Font size must be an integer between {0} and {1}.", Constants.FONT_MIN_SIZE, Constants.FONT_MAX_SIZE), "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            Font myFont = new Font(rtb.SelectionFont.FontFamily, fontSize, rtb.SelectionFont.Style);
+            Font selectionFont = rtb.SelectionFont ?? rtb.Font;
+            Font myFont = new Font(selectionFont.FontFamily, fontSize, selectionFont.Style);
             rtb.SelectionFont = myFont;
             SetFontSizeText();
             //rtb_SelectionChanged(rtb, new EventArgs());
@@ -393,7 +394,11 @@ namespace FinalProjectWinForms
         /// </summary>
         private void SetFontButtonText()
         {
-            toolStripFontType.Text = rtb.SelectionFont.Name;
+            Font selectionFont = rtb.SelectionFont;
+            if (selectionFont == null)
+                toolStripFontType.Text = "";
+            else
+                toolStripFontType.Text = selectionFont.Name;
         }
 
         /// <summary>
@@ -401,8 +406,14 @@ namespace FinalProjectWinForms
         /// </summary>
         private void SetFontSizeText()
         {
-            int fontSize = (int)Math.Round(rtb.SelectionFont.Size);
-            toolStripFontSize.Text = fontSize.ToString();
+            Font selectionFont = rtb.SelectionFont;
+            if (selectionFont == null)
+                toolStripFontSize.Text = "";
+            else
+            {
+                int fontSize = (int)Math.Round(rtb.SelectionFont.Size);
+                toolStripFontSize.Text = fontSize.ToString();
+            }
         }
 
         #endregion Font and font size

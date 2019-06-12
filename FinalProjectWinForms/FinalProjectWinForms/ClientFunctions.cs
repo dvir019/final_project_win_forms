@@ -27,6 +27,7 @@ namespace FinalProjectWinForms
             string messageWithoutLength = string.Format("{0},{1},{2}", name, GetBeforeAndAfter(), rtb.Rtf);
             int length = messageWithoutLength.Length;
             string message = string.Format("{0},{1}", length, messageWithoutLength);
+            MessageBox.Show(string.Format("length: {0}, len: {1}", length, message.Length));
             SendMessage(message);
         }
 
@@ -92,14 +93,18 @@ namespace FinalProjectWinForms
             int otherCursorAfter = int.Parse(afterAsString);
             int myCursorBefore = rtb.SelectionStart;
 
+            int selectionLength = rtb.SelectionLength;
+
             serverChange = true;
             rtb.Rtf = newRtf;
             serverChange = false;
 
             if (otherCursorBefore < otherCursorAfter)  // Text was added
-                TextAdded(myCursorBefore, otherCursorBefore, otherCursorAfter);
+                TextAdded(myCursorBefore, selectionLength, otherCursorBefore, otherCursorAfter);
             else if (otherCursorBefore > otherCursorAfter)  // Text was deleted
-                TextDeleted(myCursorBefore, otherCursorBefore, otherCursorAfter);
+                TextDeleted(myCursorBefore, selectionLength, otherCursorBefore, otherCursorAfter);
+            else  // Text's style was changed
+                TextStyleChanged(myCursorBefore, selectionLength);
         }
 
         /// <summary>
@@ -139,7 +144,7 @@ namespace FinalProjectWinForms
         /// <param name="myCursorBefore">My cursor before the change</param>
         /// <param name="otherCursorBefore">The other user cursor before the change</param>
         /// <param name="otherCursorAfter">The other user cursor after the change</param>
-        private void TextAdded(int myCursorBefore, int otherCursorBefore, int otherCursorAfter)
+        private void TextAdded(int myCursorBefore, int selectionLength, int otherCursorBefore, int otherCursorAfter)
         {
             //MessageBox.Show("Added!");
             if (otherCursorBefore < myCursorBefore)
@@ -152,6 +157,7 @@ namespace FinalProjectWinForms
                 rtb.SelectionStart = myCursorBefore;
                 //MessageBox.Show(string.Format("Added NOT moved, {0}->{1}", myCursorBefore, rtb.SelectionStart));
             }
+            rtb.SelectionLength = selectionLength;
         }
 
         /// <summary>
@@ -160,13 +166,12 @@ namespace FinalProjectWinForms
         /// <param name="myCursorBefore">My cursor before the change</param>
         /// <param name="otherCursorBefore">The other user cursor before the change</param>
         /// <param name="otherCursorAfter">The other user cursor after the change</param>
-        private void TextDeleted(int myCursorBefore, int otherCursorBefore, int otherCursorAfter)
+        private void TextDeleted(int myCursorBefore, int selectionLength, int otherCursorBefore, int otherCursorAfter)
         {
             //MessageBox.Show("Deleted!");
             if (myCursorBefore >= otherCursorBefore)
             {
                 rtb.SelectionStart = myCursorBefore - (otherCursorBefore - otherCursorAfter);
-                //MessageBox.Show(string.Format("Deleted and moved if [1], {0}->{1}", myCursorBefore, rtb.SelectionStart));
             }
             else if (myCursorBefore < otherCursorBefore && myCursorBefore > otherCursorAfter)
             {
@@ -178,6 +183,18 @@ namespace FinalProjectWinForms
                 rtb.SelectionStart = myCursorBefore;
                 //MessageBox.Show(string.Format("Deleted NOT moved, {0}->{1}", myCursorBefore, rtb.SelectionStart));
             }
+            rtb.SelectionLength = selectionLength;
+        }
+
+        /// <summary>
+        /// Move the cursor to were it was when text's style was changed.
+        /// </summary>
+        /// <param name="myCursorBefore"></param>
+        /// <param name="selectionLength"></param>
+        private void TextStyleChanged(int myCursorBefore, int selectionLength)
+        {
+            rtb.SelectionStart = myCursorBefore;
+            rtb.SelectionLength = selectionLength;
         }
 
         #endregion receive

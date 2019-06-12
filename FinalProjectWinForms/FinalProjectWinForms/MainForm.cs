@@ -78,7 +78,7 @@ namespace FinalProjectWinForms
             if (connectOrHost == ConnectOrHost.Host)
                 rtb.LoadFile(filePath);
 
-            if (connectOrHost != ConnectOrHost.Host)
+            else
                 DisableSaveButton();
         }
 

@@ -141,5 +141,8 @@
     <Content Include="Images\underline.gif" />
     <Content Include="Images\undo.gif" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Python\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -22,11 +22,25 @@ namespace FinalProjectWinForms
         #region send
 
         /// <summary>
-        /// Constructs the mesaage and sends it.
+        /// Constructs an editing mesaage and sends it.
         /// </summary>
-        private void ConstructAndSend()
+        private void ConstructAndSendEdit()
         {
-            string messageWithoutLength = string.Format("{0},{1},{2}", name, GetBeforeAndAfter(), rtb.Rtf);
+            string messageWithoutLength = string.Format("{0},{1},{2},{3}", name, Constants.EDIT_MESSAGE, GetBeforeAndAfter(), rtb.Rtf);
+            int length = messageWithoutLength.Length;
+            string message = string.Format("{0},{1}", length, messageWithoutLength);
+            SendMessage(message);
+        }
+
+        /// <summary>
+        /// Constructs a chat mesaage and sends it.
+        /// </summary>
+        private void ConstructAndSendChat()
+        {
+            string trimmedMessage = inputChatBox.Text.Trim();
+            if (trimmedMessage == "")
+                return;
+            string messageWithoutLength = string.Format("{0},{1},{2}", name, Constants.CHAT_MESSAGE, trimmedMessage);
             int length = messageWithoutLength.Length;
             string message = string.Format("{0},{1}", length, messageWithoutLength);
             SendMessage(message);

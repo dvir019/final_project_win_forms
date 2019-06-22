@@ -24,5 +24,9 @@ namespace FinalProjectWinForms
 
         // IP
         public const string MY_IP = "127.0.0.1";
+
+        // Protocol
+        public const string EDIT_MESSAGE = "edit";
+        public const string CHAT_MESSAGE = "chat";
     }
 }

@@ -99,7 +99,7 @@ namespace FinalProjectWinForms
         private void rtb_TextChanged(object sender, EventArgs e)
         {
             if (!serverChange)
-                ConstructAndSend();
+                ConstructAndSendEdit();
             previousText = rtb.Text;
         }
 

@@ -92,17 +92,46 @@ namespace FinalProjectWinForms
             return "";
         }
 
+        /// <summary>
+        /// Opens a file dialog to open a certain rtf file.
+        /// </summary>
+        /// <returns>The path to the file</returns>
         private string OpenFile()
         {
             OpenFileDialog fileDialog = new OpenFileDialog();
             fileDialog.Filter = string.Format("RTF files (*{0})|*{0}", Constants.RTF_EXTENSION);
-            if (fileDialog.ShowDialog()==DialogResult.OK)
+            fileDialog.FileOk += CheckFileExtension;
+            if (fileDialog.ShowDialog() == DialogResult.OK)
             {
                 return fileDialog.FileName;
             }
             return "";
         }
 
+        /// <summary>
+        /// Checks the extension of the file.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.ComponentModel.CancelEventArgs"/> instance containing the event data.</param>
+        private void CheckFileExtension(object sender, CancelEventArgs e)
+        {
+            if (sender is OpenFileDialog)
+            {
+                OpenFileDialog fileDialog = (OpenFileDialog)sender;
+                FileInfo file = new FileInfo(fileDialog.FileName);
+                if (file.Extension != Constants.RTF_EXTENSION)
+                {
+                    MessageBox.Show("The file must be a rtf file!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    e.Cancel = true;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Starts the python procces.
+        /// </summary>
+        /// <param name="port">The port for the server</param>
+        /// <returns></returns>
         private Process PythonProcess(int port)
         {
             Process pythonProcess = new Process();

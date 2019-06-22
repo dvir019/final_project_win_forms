@@ -142,6 +142,8 @@ namespace FinalProjectWinForms
                     TextDeleted(myCursorBefore, selectionLength, otherCursorBefore, otherCursorAfter);
                 else  // Text's style was changed
                     TextStyleChanged(myCursorBefore, selectionLength);
+
+                editsLabel.Text = string.Format("      {0} edited the file in {1}", name, DateTime.Now.ToString("HH:mm:ss"));
             }
             else
             {

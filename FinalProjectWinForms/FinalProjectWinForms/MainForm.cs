@@ -84,7 +84,7 @@ namespace FinalProjectWinForms
             {
                 if (File.ReadAllText(filePath)!="")
                     rtb.LoadFile(filePath);
-                statusBarIpPort.Text = string.Format("Ip: {0}, Port: {1}", GetLocalIPAddress(), port);
+                statusBarIpPort.Text = string.Format("      Ip: {0}, Port: {1}", GetLocalIPAddress(), port);
             }
 
             else
@@ -108,6 +108,27 @@ namespace FinalProjectWinForms
             changedAndDidntSave = true;
         }
 
+        private void MainForm_SizeChanged(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Minimized)
+                return;
+            //MessageBox.Show(string.Format("Height: {0}, Width: {1}", Height, Width));
+            Rectangle screenRectangle = RectangleToScreen(ClientRectangle);
 
+            int titleHeight = screenRectangle.Top - Top;
+
+            rtb.Height = Height - menuStrip1.Height - toolStrip1.Height - statusStrip1.Height - titleHeight - 7;
+
+            rtb.Width = ClientRectangle.Width - rtb.Location.X;
+
+            int chatCurrentHeight = chatBox.Height;
+            int chatNewHeight = Height - titleHeight - inputChatBox.Height - sendChatButton.Height - 100;
+            chatBox.Height = chatNewHeight;
+            int heightDiffernce = chatNewHeight - chatCurrentHeight;
+
+            //MessageBox.Show(string.Format("dif: {0}\nrich: {1}->{2}\nbutton: {3}->{4}", heightDiffernce, richTextBox1.Location, new Point(richTextBox1.Location.X, richTextBox1.Location.Y+heightDiffernce), button1.Location, new Point(button1.Location.X, button1.Location.Y + heightDiffernce)));
+            inputChatBox.Location = new Point(inputChatBox.Location.X, inputChatBox.Location.Y + heightDiffernce);
+            sendChatButton.Location = new Point(sendChatButton.Location.X, sendChatButton.Location.Y + heightDiffernce);
+        }
     }
 }

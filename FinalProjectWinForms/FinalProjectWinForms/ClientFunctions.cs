@@ -37,9 +37,8 @@ namespace FinalProjectWinForms
         /// </summary>
         private void ConstructAndSendChat()
         {
-            string trimmedMessage = inputChatBox.Text.Trim();
-            if (trimmedMessage == "")
-                return;
+            string trimmedMessage = GetTrimmedChatMessage();
+
             string messageWithoutLength = string.Format("{0},{1},{2}", name, Constants.CHAT_MESSAGE, trimmedMessage);
             int length = messageWithoutLength.Length;
             string message = string.Format("{0},{1}", length, messageWithoutLength);
@@ -100,7 +99,7 @@ namespace FinalProjectWinForms
                 return;
             }
             string message = ReceiveSomeCharacters(length);
-            if (message=="bye")
+            if (message == "bye")
             {
                 MessageBox.Show("Host Disconnected", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Close();
@@ -108,36 +107,48 @@ namespace FinalProjectWinForms
             }
             int firstComma = message.IndexOf(',');
             int secondComma = message.IndexOf(',', firstComma + 1);
-            int thirdComma = message.IndexOf(',', secondComma + 1);
 
             string name = message.Substring(0, firstComma);
-            string beforeAsString = message.Substring(firstComma + 1, secondComma - firstComma - 1);
-            string afterAsString = message.Substring(secondComma + 1, thirdComma - secondComma - 1);
-            string newRtf = message.Substring(thirdComma + 1);
-
-            int otherCursorBefore = int.Parse(beforeAsString);
-            int otherCursorAfter = int.Parse(afterAsString);
-            int myCursorBefore = rtb.SelectionStart;
-
-            int selectionLength = rtb.SelectionLength;
-
-            serverChange = true;
-            rtb.Rtf = newRtf;
-            serverChange = false;
-
-            if (rtb.Text.Trim()=="")
+            string messageType = message.Substring(firstComma + 1, secondComma - firstComma - 1);
+            if (messageType == "edit")
             {
-                rtb.Rtf = newRtf;
-                //MessageBox.Show("EMPTY!!!!!!");
-                //MessageBox.Show(string.Format("LEN: {0}\nrealLen: {1}\n{2}\n\n\nRTF:{3}\n\n\nreal RTF:\n{4}\n\nText: [{5}]", length, message.Length, message, newRtf, rtb.Rtf, rtb.Text));
-            }
+                int thirdComma = message.IndexOf(',', secondComma + 1);
+                int fourthComma = message.IndexOf(',', thirdComma + 1);
 
-            if (otherCursorBefore < otherCursorAfter)  // Text was added
-                TextAdded(myCursorBefore, selectionLength, otherCursorBefore, otherCursorAfter);
-            else if (otherCursorBefore > otherCursorAfter)  // Text was deleted
-                TextDeleted(myCursorBefore, selectionLength, otherCursorBefore, otherCursorAfter);
-            else  // Text's style was changed
-                TextStyleChanged(myCursorBefore, selectionLength);
+                string beforeAsString = message.Substring(secondComma + 1, thirdComma - secondComma - 1);
+                string afterAsString = message.Substring(thirdComma + 1, fourthComma - thirdComma - 1);
+                string newRtf = message.Substring(fourthComma + 1);
+
+                int otherCursorBefore = int.Parse(beforeAsString);
+                int otherCursorAfter = int.Parse(afterAsString);
+                int myCursorBefore = rtb.SelectionStart;
+
+                int selectionLength = rtb.SelectionLength;
+
+                serverChange = true;
+                rtb.Rtf = newRtf;
+                serverChange = false;
+
+                if (rtb.Text.Trim() == "")
+                {
+                    rtb.Rtf = newRtf;
+                    //MessageBox.Show("EMPTY!!!!!!");
+                    //MessageBox.Show(string.Format("LEN: {0}\nrealLen: {1}\n{2}\n\n\nRTF:{3}\n\n\nreal RTF:\n{4}\n\nText: [{5}]", length, message.Length, message, newRtf, rtb.Rtf, rtb.Text));
+                }
+
+                if (otherCursorBefore < otherCursorAfter)  // Text was added
+                    TextAdded(myCursorBefore, selectionLength, otherCursorBefore, otherCursorAfter);
+                else if (otherCursorBefore > otherCursorAfter)  // Text was deleted
+                    TextDeleted(myCursorBefore, selectionLength, otherCursorBefore, otherCursorAfter);
+                else  // Text's style was changed
+                    TextStyleChanged(myCursorBefore, selectionLength);
+            }
+            else
+            {
+
+                string messageFromUser = message.Substring(secondComma + 1);
+                AddNewMessage(name, messageFromUser);
+            }
         }
 
         /// <summary>

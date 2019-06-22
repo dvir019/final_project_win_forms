@@ -27,6 +27,8 @@ namespace FinalProjectWinForms
 
         private Thread receiveThread;
 
+        private bool changedAndDidntSave;
+
 
         /// <summary>
         /// Constructor of the class.
@@ -55,6 +57,8 @@ namespace FinalProjectWinForms
             stopAll = false;
 
             CheckForIllegalCrossThreadCalls = false;
+
+            changedAndDidntSave = false;
         }
 
         /// <summary>
@@ -74,7 +78,7 @@ namespace FinalProjectWinForms
         private void Form1_Load(object sender, EventArgs e)
         {
             receiveThread.Start();
-            Closed += (s, args) => CloseSockets();
+            //Closed += (s, args) => CloseSockets();
 
             if (connectOrHost == ConnectOrHost.Host)
             {
@@ -101,7 +105,9 @@ namespace FinalProjectWinForms
             if (!serverChange)
                 ConstructAndSendEdit();
             previousText = rtb.Text;
+            changedAndDidntSave = true;
         }
+
 
     }
 }

@@ -427,7 +427,16 @@ namespace FinalProjectWinForms
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         private void toolStripSave_Click(object sender, EventArgs e)
         {
+            SaveFile();
+        }
+
+        /// <summary>
+        /// Saves the file.
+        /// </summary>
+        private void SaveFile()
+        {
             rtb.SaveFile(filePath);
+            changedAndDidntSave = false;
         }
 
         /// <summary>

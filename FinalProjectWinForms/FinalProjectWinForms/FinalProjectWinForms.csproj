@@ -50,6 +50,9 @@
     <Compile Include="ClientFunctions.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="CloseFormFunctions.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ConnectAndHostScreen.cs">
       <SubType>Form</SubType>
     </Compile>

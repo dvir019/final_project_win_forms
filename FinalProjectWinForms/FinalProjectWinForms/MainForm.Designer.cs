@@ -70,6 +70,9 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.statusStripLineColumn = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusBarIpPort = new System.Windows.Forms.ToolStripStatusLabel();
+            this.chatBox = new System.Windows.Forms.RichTextBox();
+            this.inputChatBox = new System.Windows.Forms.RichTextBox();
+            this.sendChatButton = new System.Windows.Forms.Button();
             this.toolStrip1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -372,10 +375,9 @@
             // rtb
             // 
             this.rtb.BulletIndent = 15;
-            this.rtb.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rtb.Location = new System.Drawing.Point(0, 51);
+            this.rtb.Location = new System.Drawing.Point(172, 51);
             this.rtb.Name = "rtb";
-            this.rtb.Size = new System.Drawing.Size(800, 428);
+            this.rtb.Size = new System.Drawing.Size(628, 428);
             this.rtb.TabIndex = 2;
             this.rtb.Text = "";
             this.rtb.WordWrap = false;
@@ -465,11 +467,40 @@
             this.statusBarIpPort.Name = "statusBarIpPort";
             this.statusBarIpPort.Size = new System.Drawing.Size(0, 17);
             // 
+            // chatBox
+            // 
+            this.chatBox.Location = new System.Drawing.Point(7, 51);
+            this.chatBox.Name = "chatBox";
+            this.chatBox.ReadOnly = true;
+            this.chatBox.Size = new System.Drawing.Size(159, 271);
+            this.chatBox.TabIndex = 5;
+            this.chatBox.Text = "";
+            // 
+            // inputChatBox
+            // 
+            this.inputChatBox.Location = new System.Drawing.Point(7, 329);
+            this.inputChatBox.Name = "inputChatBox";
+            this.inputChatBox.Size = new System.Drawing.Size(159, 96);
+            this.inputChatBox.TabIndex = 6;
+            this.inputChatBox.Text = "";
+            // 
+            // sendChatButton
+            // 
+            this.sendChatButton.Location = new System.Drawing.Point(48, 430);
+            this.sendChatButton.Name = "sendChatButton";
+            this.sendChatButton.Size = new System.Drawing.Size(75, 23);
+            this.sendChatButton.TabIndex = 7;
+            this.sendChatButton.Text = "Send";
+            this.sendChatButton.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 479);
+            this.Controls.Add(this.sendChatButton);
+            this.Controls.Add(this.inputChatBox);
+            this.Controls.Add(this.chatBox);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.lineColumnLabel);
             this.Controls.Add(this.rtb);
@@ -532,6 +563,9 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel statusStripLineColumn;
         private System.Windows.Forms.ToolStripStatusLabel statusBarIpPort;
+        private System.Windows.Forms.RichTextBox chatBox;
+        private System.Windows.Forms.RichTextBox inputChatBox;
+        private System.Windows.Forms.Button sendChatButton;
     }
 }
 

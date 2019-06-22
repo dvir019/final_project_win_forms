@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChatFunctions.cs" />
     <Compile Include="ClientFunctions.cs">
       <SubType>Form</SubType>
     </Compile>

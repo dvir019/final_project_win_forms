@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Net.Sockets;
 using System.Text;
@@ -77,7 +78,8 @@ namespace FinalProjectWinForms
 
             if (connectOrHost == ConnectOrHost.Host)
             {
-                rtb.LoadFile(filePath);
+                if (File.ReadAllText(filePath)!="")
+                    rtb.LoadFile(filePath);
                 statusBarIpPort.Text = string.Format("Ip: {0}, Port: {1}", GetLocalIPAddress(), port);
             }
 

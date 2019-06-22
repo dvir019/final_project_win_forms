@@ -37,7 +37,12 @@ namespace FinalProjectWinForms
             if (!ConnectToPython(port))
             {
                 MessageBox.Show("Test");
-                pythonProcess.Kill();
+                try
+                {
+                    pythonProcess.Kill();
+                }
+                catch
+                { }
                 return;
             }
 
@@ -80,7 +85,8 @@ namespace FinalProjectWinForms
             if (inputForm.ShowDialog() == DialogResult.OK)
             {
                 string fullPath = inputForm.FullPath;
-                File.Create(fullPath);
+                FileStream fileStream = File.Create(fullPath);
+                fileStream.Close();
                 return fullPath;
             }
             return "";
@@ -100,10 +106,15 @@ namespace FinalProjectWinForms
         private Process PythonProcess(int port)
         {
             Process pythonProcess = new Process();
+            //pythonProcess.StartInfo.RedirectStandardOutput = true;
+            //pythonProcess.StartInfo.UseShellExecute = false;
+            //pythonProcess.StartInfo.CreateNoWindow = true;
             pythonProcess.StartInfo = new ProcessStartInfo(@"C:\Users\Horim\Desktop\forScreenshots.py");
             pythonProcess.StartInfo.Arguments = port.ToString();
+            //pythonProcess.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+
             pythonProcess.Start();
-            Thread.Sleep(10);
+            Thread.Sleep(200);
             return pythonProcess;
         }
     }

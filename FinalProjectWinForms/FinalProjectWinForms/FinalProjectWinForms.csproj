@@ -67,6 +67,12 @@
     <Compile Include="ContextMenuStripFunctions.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="EditsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditsForm.Designer.cs">
+      <DependentUpon>EditsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="HostFunctions.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,6 +96,9 @@
     </Compile>
     <EmbeddedResource Include="ConnectAndHostScreen.resx">
       <DependentUpon>ConnectAndHostScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditsForm.resx">
+      <DependentUpon>EditsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InputForm.resx">
       <DependentUpon>InputForm.cs</DependentUpon>

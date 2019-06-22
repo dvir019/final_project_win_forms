@@ -136,6 +136,7 @@
     <Content Include="Images\bullist.gif" />
     <Content Include="Images\copy.gif" />
     <Content Include="Images\cut.gif" />
+    <Content Include="Images\edits.png" />
     <Content Include="Images\forecolor.gif" />
     <Content Include="Images\image.gif" />
     <Content Include="Images\indent.gif" />
@@ -149,6 +150,7 @@
     <Content Include="Images\paste.gif" />
     <Content Include="Images\redo.gif" />
     <Content Include="Images\save.gif" />
+    <Content Include="Images\saveAs.png" />
     <Content Include="Images\search.gif" />
     <Content Include="Images\strikethrough.gif" />
     <Content Include="Images\underline.gif" />

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -440,14 +441,67 @@ namespace FinalProjectWinForms
         }
 
         /// <summary>
+        /// Handles the Click event of the toolStripSaveAs button.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        private void toolStripSaveAs_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveDialog = new SaveFileDialog();
+            saveDialog.Filter = string.Format("RTF files (*{0})|*{0}", Constants.RTF_EXTENSION);
+            saveDialog.FileOk += CheckFileExtension;
+            if (saveDialog.ShowDialog() == DialogResult.OK)
+            {
+                FileStream fileStream = File.Create(saveDialog.FileName);
+                fileStream.Close();
+                filePath = saveDialog.FileName;
+                toolStripSave_Click(sender, e);
+            }
+        }
+
+        /// <summary>
+        /// Checks the extension of the file.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.ComponentModel.CancelEventArgs"/> instance containing the event data.</param>
+        private void CheckFileExtension(object sender, CancelEventArgs e)
+        {
+            if (sender is SaveFileDialog)
+            {
+                SaveFileDialog fileDialog = (SaveFileDialog)sender;
+                FileInfo file = new FileInfo(fileDialog.FileName);
+                if (file.Extension != Constants.RTF_EXTENSION)
+                {
+                    MessageBox.Show("The file must be a rtf file!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    e.Cancel = true;
+                }
+            }
+        }
+
+        /// <summary>
         /// Disables the save button.
         /// </summary>
-        private void DisableSaveButton()
+        private void DisableSaveButtons()
         {
             toolStripSave.Enabled = false;
+            toolStripSaveAs.Enabled = false;
         }
 
         #endregion save and save as
+
+        #region Edits
+
+        /// <summary>
+        /// Handles the Click event of the toolStripEdits button.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        private void editsButton_Click(object sender, EventArgs e)
+        {
+            editsForm.ShowDialog();
+        }
+
+        #endregion Edits
 
         #region CheckAndUnCheckAllButtons
 

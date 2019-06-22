@@ -143,7 +143,9 @@ namespace FinalProjectWinForms
                 else  // Text's style was changed
                     TextStyleChanged(myCursorBefore, selectionLength);
 
-                editsLabel.Text = string.Format("      {0} edited the file in {1}", name, DateTime.Now.ToString("HH:mm:ss"));
+                string edit = string.Format("{0} edited the file in {1}", name, DateTime.Now.ToString("HH:mm:ss"));
+                editsLabel.Text = string.Format("      {0}", edit);
+                //editsForm.AddNewLine(edit);
             }
             else
             {

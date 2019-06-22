@@ -29,6 +29,9 @@ namespace FinalProjectWinForms
 
         private bool changedAndDidntSave;
 
+        private EditsForm editsForm;
+
+        private bool loadChange;
 
         /// <summary>
         /// Constructor of the class.
@@ -59,6 +62,10 @@ namespace FinalProjectWinForms
             CheckForIllegalCrossThreadCalls = false;
 
             changedAndDidntSave = false;
+
+            editsForm = new EditsForm();
+
+            loadChange = false;
         }
 
         /// <summary>
@@ -82,13 +89,17 @@ namespace FinalProjectWinForms
 
             if (connectOrHost == ConnectOrHost.Host)
             {
-                if (File.ReadAllText(filePath)!="")
+                if (File.ReadAllText(filePath) != "")
+                {
+                    loadChange = true;
                     rtb.LoadFile(filePath);
+                    loadChange = false;
+                }
                 statusBarIpPort.Text = string.Format("      Ip: {0}, Port: {1}", GetLocalIPAddress(), port);
             }
 
             else
-                DisableSaveButton();
+                DisableSaveButtons();
         }
 
 
@@ -103,11 +114,25 @@ namespace FinalProjectWinForms
         private void rtb_TextChanged(object sender, EventArgs e)
         {
             if (!serverChange)
+            {
                 ConstructAndSendEdit();
+                if (!loadChange)
+                {
+                    //string edit = string.Format("You ({0}) edited the file in {1}", name, DateTime.Now.ToString("HH:mm:ss"));
+                    //editsForm.AddNewLine(edit);
+                }
+            }
             previousText = rtb.Text;
             changedAndDidntSave = true;
+
+            
         }
 
+        /// <summary>
+        /// Handles the SizeChanged event of the form.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         private void MainForm_SizeChanged(object sender, EventArgs e)
         {
             if (WindowState == FormWindowState.Minimized)
@@ -130,5 +155,7 @@ namespace FinalProjectWinForms
             inputChatBox.Location = new Point(inputChatBox.Location.X, inputChatBox.Location.Y + heightDiffernce);
             sendChatButton.Location = new Point(sendChatButton.Location.X, sendChatButton.Location.Y + heightDiffernce);
         }
+
+
     }
 }

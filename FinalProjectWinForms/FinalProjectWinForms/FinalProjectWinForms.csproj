@@ -152,6 +152,7 @@
     <Content Include="Images\save.gif" />
     <Content Include="Images\saveAs.png" />
     <Content Include="Images\search.gif" />
+    <Content Include="Images\ShareMeIcon.ico" />
     <Content Include="Images\strikethrough.gif" />
     <Content Include="Images\underline.gif" />
     <Content Include="Images\undo.gif" />

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConnectAndHostScreen));
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.connectPortLabel = new System.Windows.Forms.Label();
             this.connectPortTextBox = new System.Windows.Forms.TextBox();
@@ -230,9 +231,11 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ConnectAndHostScreen";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Opening Screen";
             this.Load += new System.EventHandler(this.ConnectAndHostScreen_Load);
             this.groupBox2.ResumeLayout(false);

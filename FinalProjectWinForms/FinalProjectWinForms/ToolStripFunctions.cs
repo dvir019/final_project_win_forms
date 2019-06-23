@@ -273,7 +273,7 @@ namespace FinalProjectWinForms
         {
             ColorDialog colorDialog = new ColorDialog();
             colorDialog.Color = rtb.SelectionColor;
-            if (colorDialog.ShowDialog() == DialogResult.OK)
+            if (colorDialog.ShowDialog(this) == DialogResult.OK)
             {
                 rtb.SelectionColor = colorDialog.Color;
                 PaintColorButtons();
@@ -289,7 +289,7 @@ namespace FinalProjectWinForms
         {
             ColorDialog colorDialog = new ColorDialog();
             colorDialog.Color = rtb.SelectionBackColor;
-            if (colorDialog.ShowDialog() == DialogResult.OK)
+            if (colorDialog.ShowDialog(this) == DialogResult.OK)
             {
                 rtb.SelectionBackColor = colorDialog.Color;
                 PaintColorButtons();
@@ -323,7 +323,7 @@ namespace FinalProjectWinForms
             FontDialog fontDialog = new FontDialog();
             fontDialog.Font = rtb.SelectionFont ?? rtb.Font;
             fontDialog.ShowColor = true;
-            if (fontDialog.ShowDialog() == DialogResult.OK)
+            if (fontDialog.ShowDialog(this) == DialogResult.OK)
             {
                 rtb.SelectionFont = fontDialog.Font;
                 rtb.SelectionColor = fontDialog.Color;
@@ -450,7 +450,7 @@ namespace FinalProjectWinForms
             SaveFileDialog saveDialog = new SaveFileDialog();
             saveDialog.Filter = string.Format("RTF files (*{0})|*{0}", Constants.RTF_EXTENSION);
             saveDialog.FileOk += CheckFileExtension;
-            if (saveDialog.ShowDialog() == DialogResult.OK)
+            if (saveDialog.ShowDialog(this) == DialogResult.OK)
             {
                 FileStream fileStream = File.Create(saveDialog.FileName);
                 fileStream.Close();

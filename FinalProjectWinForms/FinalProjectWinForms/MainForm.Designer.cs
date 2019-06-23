@@ -29,21 +29,46 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripSave = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSaveAs = new System.Windows.Forms.ToolStripButton();
             this.tsFileSeparator = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripCut = new System.Windows.Forms.ToolStripButton();
+            this.toolStripCopy = new System.Windows.Forms.ToolStripButton();
+            this.toolStripPaste = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripUndo = new System.Windows.Forms.ToolStripButton();
+            this.toolStripRedo = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripBold = new System.Windows.Forms.ToolStripButton();
+            this.toolStripItalic = new System.Windows.Forms.ToolStripButton();
+            this.toolStripUnderline = new System.Windows.Forms.ToolStripButton();
+            this.toolStripStrikeout = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripLeft = new System.Windows.Forms.ToolStripButton();
+            this.toolStripCenter = new System.Windows.Forms.ToolStripButton();
+            this.toolStripRight = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripForegroundColor = new System.Windows.Forms.ToolStripDropDownButton();
+            this.toolStripSelectForegroundColor = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripBackgroundColor = new System.Windows.Forms.ToolStripDropDownButton();
+            this.toolStripSelectBackgroundColor = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripBullet = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripFontSize = new System.Windows.Forms.ToolStripComboBox();
             this.toolStripFontType = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
             this.rtb = new System.Windows.Forms.RichTextBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.contextMenuStripCut = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStripCopy = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStripPaste = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
+            this.contextMenuStripUndo = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStripRedo = new System.Windows.Forms.ToolStripMenuItem();
             this.lineColumnLabel = new System.Windows.Forms.Label();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.statusStripLineColumn = new System.Windows.Forms.ToolStripStatusLabel();
@@ -52,31 +77,6 @@
             this.chatBox = new System.Windows.Forms.RichTextBox();
             this.inputChatBox = new System.Windows.Forms.RichTextBox();
             this.sendChatButton = new System.Windows.Forms.Button();
-            this.toolStripSave = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSaveAs = new System.Windows.Forms.ToolStripButton();
-            this.toolStripCut = new System.Windows.Forms.ToolStripButton();
-            this.toolStripCopy = new System.Windows.Forms.ToolStripButton();
-            this.toolStripPaste = new System.Windows.Forms.ToolStripButton();
-            this.toolStripUndo = new System.Windows.Forms.ToolStripButton();
-            this.toolStripRedo = new System.Windows.Forms.ToolStripButton();
-            this.toolStripBold = new System.Windows.Forms.ToolStripButton();
-            this.toolStripItalic = new System.Windows.Forms.ToolStripButton();
-            this.toolStripUnderline = new System.Windows.Forms.ToolStripButton();
-            this.toolStripStrikeout = new System.Windows.Forms.ToolStripButton();
-            this.toolStripLeft = new System.Windows.Forms.ToolStripButton();
-            this.toolStripCenter = new System.Windows.Forms.ToolStripButton();
-            this.toolStripRight = new System.Windows.Forms.ToolStripButton();
-            this.toolStripForegroundColor = new System.Windows.Forms.ToolStripDropDownButton();
-            this.toolStripSelectForegroundColor = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripBackgroundColor = new System.Windows.Forms.ToolStripDropDownButton();
-            this.toolStripSelectBackgroundColor = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripBullet = new System.Windows.Forms.ToolStripButton();
-            this.toolStripEdits = new System.Windows.Forms.ToolStripButton();
-            this.contextMenuStripCut = new System.Windows.Forms.ToolStripMenuItem();
-            this.contextMenuStripCopy = new System.Windows.Forms.ToolStripMenuItem();
-            this.contextMenuStripPaste = new System.Windows.Forms.ToolStripMenuItem();
-            this.contextMenuStripUndo = new System.Windows.Forms.ToolStripMenuItem();
-            this.contextMenuStripRedo = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -120,43 +120,239 @@
             this.toolStripSeparator7,
             this.toolStripFontSize,
             this.toolStripFontType,
-            this.toolStripSeparator8,
-            this.toolStripEdits});
+            this.toolStripSeparator8});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(800, 27);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
             // 
+            // toolStripSave
+            // 
+            this.toolStripSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripSave.Image = global::FinalProjectWinForms.Properties.Resources.save;
+            this.toolStripSave.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripSave.ImageTransparentColor = System.Drawing.Color.Transparent;
+            this.toolStripSave.Name = "toolStripSave";
+            this.toolStripSave.Size = new System.Drawing.Size(24, 24);
+            this.toolStripSave.Text = "Save (Ctrl+S)";
+            this.toolStripSave.Click += new System.EventHandler(this.toolStripSave_Click);
+            // 
+            // toolStripSaveAs
+            // 
+            this.toolStripSaveAs.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripSaveAs.Image = global::FinalProjectWinForms.Properties.Resources.saveAs;
+            this.toolStripSaveAs.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripSaveAs.Name = "toolStripSaveAs";
+            this.toolStripSaveAs.Size = new System.Drawing.Size(23, 24);
+            this.toolStripSaveAs.Text = "save as";
+            this.toolStripSaveAs.Click += new System.EventHandler(this.toolStripSaveAs_Click);
+            // 
             // tsFileSeparator
             // 
             this.tsFileSeparator.Name = "tsFileSeparator";
             this.tsFileSeparator.Size = new System.Drawing.Size(6, 27);
+            // 
+            // toolStripCut
+            // 
+            this.toolStripCut.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripCut.Image = global::FinalProjectWinForms.Properties.Resources.cut;
+            this.toolStripCut.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripCut.ImageTransparentColor = System.Drawing.Color.Transparent;
+            this.toolStripCut.Name = "toolStripCut";
+            this.toolStripCut.Size = new System.Drawing.Size(24, 24);
+            this.toolStripCut.Text = "Cut (Ctrl+X)";
+            this.toolStripCut.Click += new System.EventHandler(this.toolStripCut_Click);
+            // 
+            // toolStripCopy
+            // 
+            this.toolStripCopy.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripCopy.Image = global::FinalProjectWinForms.Properties.Resources.copy;
+            this.toolStripCopy.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripCopy.ImageTransparentColor = System.Drawing.Color.Transparent;
+            this.toolStripCopy.Name = "toolStripCopy";
+            this.toolStripCopy.Size = new System.Drawing.Size(24, 24);
+            this.toolStripCopy.Text = "Copy (Ctrl+C)";
+            this.toolStripCopy.Click += new System.EventHandler(this.toolStripCopy_Click);
+            // 
+            // toolStripPaste
+            // 
+            this.toolStripPaste.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripPaste.Image = global::FinalProjectWinForms.Properties.Resources.paste;
+            this.toolStripPaste.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripPaste.ImageTransparentColor = System.Drawing.Color.Transparent;
+            this.toolStripPaste.Name = "toolStripPaste";
+            this.toolStripPaste.Size = new System.Drawing.Size(24, 24);
+            this.toolStripPaste.Text = "Paste (Ctrl+V)";
+            this.toolStripPaste.Click += new System.EventHandler(this.toolStripPaste_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
             this.toolStripSeparator4.Size = new System.Drawing.Size(6, 27);
             // 
+            // toolStripUndo
+            // 
+            this.toolStripUndo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripUndo.Image = global::FinalProjectWinForms.Properties.Resources.undo;
+            this.toolStripUndo.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripUndo.ImageTransparentColor = System.Drawing.Color.Transparent;
+            this.toolStripUndo.Name = "toolStripUndo";
+            this.toolStripUndo.Size = new System.Drawing.Size(24, 24);
+            this.toolStripUndo.Text = "Undo (Ctrl+Z)";
+            this.toolStripUndo.Click += new System.EventHandler(this.toolStripUndo_Click);
+            // 
+            // toolStripRedo
+            // 
+            this.toolStripRedo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripRedo.Image = global::FinalProjectWinForms.Properties.Resources.redo;
+            this.toolStripRedo.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripRedo.ImageTransparentColor = System.Drawing.Color.Transparent;
+            this.toolStripRedo.Name = "toolStripRedo";
+            this.toolStripRedo.Size = new System.Drawing.Size(24, 24);
+            this.toolStripRedo.Text = "Redo (Ctrl+Y)";
+            this.toolStripRedo.Click += new System.EventHandler(this.toolStripRedo_Click);
+            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 27);
+            // 
+            // toolStripBold
+            // 
+            this.toolStripBold.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripBold.Image = global::FinalProjectWinForms.Properties.Resources.bold;
+            this.toolStripBold.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripBold.Name = "toolStripBold";
+            this.toolStripBold.Size = new System.Drawing.Size(24, 24);
+            this.toolStripBold.Text = "Bold (Ctrl+B)";
+            this.toolStripBold.Click += new System.EventHandler(this.toolStripBold_Click);
+            // 
+            // toolStripItalic
+            // 
+            this.toolStripItalic.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripItalic.Image = global::FinalProjectWinForms.Properties.Resources.italic;
+            this.toolStripItalic.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripItalic.Name = "toolStripItalic";
+            this.toolStripItalic.Size = new System.Drawing.Size(24, 24);
+            this.toolStripItalic.Text = "Italic (Ctrl+I)";
+            this.toolStripItalic.Click += new System.EventHandler(this.toolStripItalic_Click);
+            // 
+            // toolStripUnderline
+            // 
+            this.toolStripUnderline.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripUnderline.Image = global::FinalProjectWinForms.Properties.Resources.underline;
+            this.toolStripUnderline.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripUnderline.Name = "toolStripUnderline";
+            this.toolStripUnderline.Size = new System.Drawing.Size(24, 24);
+            this.toolStripUnderline.Text = "Underline (Ctrl+U)";
+            this.toolStripUnderline.Click += new System.EventHandler(this.toolStripUnderline_Click);
+            // 
+            // toolStripStrikeout
+            // 
+            this.toolStripStrikeout.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripStrikeout.Image = global::FinalProjectWinForms.Properties.Resources.strikethrough;
+            this.toolStripStrikeout.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripStrikeout.Name = "toolStripStrikeout";
+            this.toolStripStrikeout.Size = new System.Drawing.Size(24, 24);
+            this.toolStripStrikeout.Text = "Strikeout";
+            this.toolStripStrikeout.Click += new System.EventHandler(this.toolStripStrikeout_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(6, 27);
             // 
+            // toolStripLeft
+            // 
+            this.toolStripLeft.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripLeft.Image = global::FinalProjectWinForms.Properties.Resources.justifyleft;
+            this.toolStripLeft.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripLeft.Name = "toolStripLeft";
+            this.toolStripLeft.Size = new System.Drawing.Size(24, 24);
+            this.toolStripLeft.Text = "Left";
+            this.toolStripLeft.Click += new System.EventHandler(this.toolStripLeft_Click);
+            // 
+            // toolStripCenter
+            // 
+            this.toolStripCenter.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripCenter.Image = global::FinalProjectWinForms.Properties.Resources.justifycenter;
+            this.toolStripCenter.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripCenter.Name = "toolStripCenter";
+            this.toolStripCenter.Size = new System.Drawing.Size(24, 24);
+            this.toolStripCenter.Text = "Center";
+            this.toolStripCenter.Click += new System.EventHandler(this.toolStripCenter_Click);
+            // 
+            // toolStripRight
+            // 
+            this.toolStripRight.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripRight.Image = global::FinalProjectWinForms.Properties.Resources.justifyright;
+            this.toolStripRight.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripRight.Name = "toolStripRight";
+            this.toolStripRight.Size = new System.Drawing.Size(24, 24);
+            this.toolStripRight.Text = "Right";
+            this.toolStripRight.Click += new System.EventHandler(this.toolStripRight_Click);
+            // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(6, 27);
             // 
+            // toolStripForegroundColor
+            // 
+            this.toolStripForegroundColor.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripForegroundColor.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripSelectForegroundColor});
+            this.toolStripForegroundColor.Image = global::FinalProjectWinForms.Properties.Resources.forecolor;
+            this.toolStripForegroundColor.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripForegroundColor.Name = "toolStripForegroundColor";
+            this.toolStripForegroundColor.Size = new System.Drawing.Size(33, 24);
+            this.toolStripForegroundColor.Text = "    ";
+            this.toolStripForegroundColor.ToolTipText = "Foreground color";
+            this.toolStripForegroundColor.Click += new System.EventHandler(this.toolStripForegroundColor_Click);
+            // 
+            // toolStripSelectForegroundColor
+            // 
+            this.toolStripSelectForegroundColor.Name = "toolStripSelectForegroundColor";
+            this.toolStripSelectForegroundColor.Size = new System.Drawing.Size(144, 22);
+            this.toolStripSelectForegroundColor.Text = "Select color...";
+            this.toolStripSelectForegroundColor.Click += new System.EventHandler(this.toolStripSelectForegroundColor_Click);
+            // 
+            // toolStripBackgroundColor
+            // 
+            this.toolStripBackgroundColor.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripBackgroundColor.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripSelectBackgroundColor});
+            this.toolStripBackgroundColor.Image = global::FinalProjectWinForms.Properties.Resources.backcolor;
+            this.toolStripBackgroundColor.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripBackgroundColor.Name = "toolStripBackgroundColor";
+            this.toolStripBackgroundColor.Size = new System.Drawing.Size(33, 24);
+            this.toolStripBackgroundColor.Text = "    ";
+            this.toolStripBackgroundColor.ToolTipText = "Background color";
+            this.toolStripBackgroundColor.Click += new System.EventHandler(this.toolStripBackgroundColor_Click);
+            // 
+            // toolStripSelectBackgroundColor
+            // 
+            this.toolStripSelectBackgroundColor.Name = "toolStripSelectBackgroundColor";
+            this.toolStripSelectBackgroundColor.Size = new System.Drawing.Size(144, 22);
+            this.toolStripSelectBackgroundColor.Text = "Select color...";
+            this.toolStripSelectBackgroundColor.Click += new System.EventHandler(this.toolStripSelectBackgroundColor_Click);
+            // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
             this.toolStripSeparator5.Size = new System.Drawing.Size(6, 27);
+            // 
+            // toolStripBullet
+            // 
+            this.toolStripBullet.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripBullet.Image = global::FinalProjectWinForms.Properties.Resources.bullist;
+            this.toolStripBullet.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripBullet.ImageTransparentColor = System.Drawing.Color.Transparent;
+            this.toolStripBullet.Name = "toolStripBullet";
+            this.toolStripBullet.Size = new System.Drawing.Size(24, 24);
+            this.toolStripBullet.Text = "Bullet";
+            this.toolStripBullet.Click += new System.EventHandler(this.toolStripBullet_Click);
             // 
             // toolStripSeparator7
             // 
@@ -208,6 +404,7 @@
             this.rtb.WordWrap = false;
             this.rtb.SelectionChanged += new System.EventHandler(this.rtb_SelectionChanged);
             this.rtb.TextChanged += new System.EventHandler(this.rtb_TextChanged);
+            this.rtb.KeyDown += new System.Windows.Forms.KeyEventHandler(this.rtb_KeyDown);
             // 
             // contextMenuStrip1
             // 
@@ -221,10 +418,45 @@
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(104, 120);
             // 
+            // contextMenuStripCut
+            // 
+            this.contextMenuStripCut.Image = global::FinalProjectWinForms.Properties.Resources.cut;
+            this.contextMenuStripCut.Name = "contextMenuStripCut";
+            this.contextMenuStripCut.Size = new System.Drawing.Size(103, 22);
+            this.contextMenuStripCut.Text = "Cut";
+            // 
+            // contextMenuStripCopy
+            // 
+            this.contextMenuStripCopy.Image = global::FinalProjectWinForms.Properties.Resources.copy;
+            this.contextMenuStripCopy.Name = "contextMenuStripCopy";
+            this.contextMenuStripCopy.Size = new System.Drawing.Size(103, 22);
+            this.contextMenuStripCopy.Text = "Copy";
+            // 
+            // contextMenuStripPaste
+            // 
+            this.contextMenuStripPaste.Image = global::FinalProjectWinForms.Properties.Resources.paste;
+            this.contextMenuStripPaste.Name = "contextMenuStripPaste";
+            this.contextMenuStripPaste.Size = new System.Drawing.Size(103, 22);
+            this.contextMenuStripPaste.Text = "Paste";
+            // 
             // toolStripSeparator6
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
             this.toolStripSeparator6.Size = new System.Drawing.Size(100, 6);
+            // 
+            // contextMenuStripUndo
+            // 
+            this.contextMenuStripUndo.Image = global::FinalProjectWinForms.Properties.Resources.undo;
+            this.contextMenuStripUndo.Name = "contextMenuStripUndo";
+            this.contextMenuStripUndo.Size = new System.Drawing.Size(103, 22);
+            this.contextMenuStripUndo.Text = "Undo";
+            // 
+            // contextMenuStripRedo
+            // 
+            this.contextMenuStripRedo.Image = global::FinalProjectWinForms.Properties.Resources.redo;
+            this.contextMenuStripRedo.Name = "contextMenuStripRedo";
+            this.contextMenuStripRedo.Size = new System.Drawing.Size(103, 22);
+            this.contextMenuStripRedo.Text = "Redo";
             // 
             // lineColumnLabel
             // 
@@ -290,248 +522,6 @@
             this.sendChatButton.UseVisualStyleBackColor = true;
             this.sendChatButton.Click += new System.EventHandler(this.sendChatButton_Click);
             // 
-            // toolStripSave
-            // 
-            this.toolStripSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripSave.Image = global::FinalProjectWinForms.Properties.Resources.save;
-            this.toolStripSave.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripSave.ImageTransparentColor = System.Drawing.Color.Transparent;
-            this.toolStripSave.Name = "toolStripSave";
-            this.toolStripSave.Size = new System.Drawing.Size(24, 24);
-            this.toolStripSave.Text = "Save";
-            this.toolStripSave.Click += new System.EventHandler(this.toolStripSave_Click);
-            // 
-            // toolStripSaveAs
-            // 
-            this.toolStripSaveAs.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripSaveAs.Image = global::FinalProjectWinForms.Properties.Resources.saveAs;
-            this.toolStripSaveAs.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripSaveAs.Name = "toolStripSaveAs";
-            this.toolStripSaveAs.Size = new System.Drawing.Size(23, 24);
-            this.toolStripSaveAs.Text = "save as";
-            this.toolStripSaveAs.Click += new System.EventHandler(this.toolStripSaveAs_Click);
-            // 
-            // toolStripCut
-            // 
-            this.toolStripCut.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripCut.Image = global::FinalProjectWinForms.Properties.Resources.cut;
-            this.toolStripCut.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripCut.ImageTransparentColor = System.Drawing.Color.Transparent;
-            this.toolStripCut.Name = "toolStripCut";
-            this.toolStripCut.Size = new System.Drawing.Size(24, 24);
-            this.toolStripCut.Text = "Cut";
-            this.toolStripCut.Click += new System.EventHandler(this.toolStripCut_Click);
-            // 
-            // toolStripCopy
-            // 
-            this.toolStripCopy.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripCopy.Image = global::FinalProjectWinForms.Properties.Resources.copy;
-            this.toolStripCopy.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripCopy.ImageTransparentColor = System.Drawing.Color.Transparent;
-            this.toolStripCopy.Name = "toolStripCopy";
-            this.toolStripCopy.Size = new System.Drawing.Size(24, 24);
-            this.toolStripCopy.Text = "Copy";
-            this.toolStripCopy.Click += new System.EventHandler(this.toolStripCopy_Click);
-            // 
-            // toolStripPaste
-            // 
-            this.toolStripPaste.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripPaste.Image = global::FinalProjectWinForms.Properties.Resources.paste;
-            this.toolStripPaste.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripPaste.ImageTransparentColor = System.Drawing.Color.Transparent;
-            this.toolStripPaste.Name = "toolStripPaste";
-            this.toolStripPaste.Size = new System.Drawing.Size(24, 24);
-            this.toolStripPaste.Text = "Paste";
-            this.toolStripPaste.Click += new System.EventHandler(this.toolStripPaste_Click);
-            // 
-            // toolStripUndo
-            // 
-            this.toolStripUndo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripUndo.Image = global::FinalProjectWinForms.Properties.Resources.undo;
-            this.toolStripUndo.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripUndo.ImageTransparentColor = System.Drawing.Color.Transparent;
-            this.toolStripUndo.Name = "toolStripUndo";
-            this.toolStripUndo.Size = new System.Drawing.Size(24, 24);
-            this.toolStripUndo.Text = "Undo";
-            this.toolStripUndo.Click += new System.EventHandler(this.toolStripUndo_Click);
-            // 
-            // toolStripRedo
-            // 
-            this.toolStripRedo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripRedo.Image = global::FinalProjectWinForms.Properties.Resources.redo;
-            this.toolStripRedo.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripRedo.ImageTransparentColor = System.Drawing.Color.Transparent;
-            this.toolStripRedo.Name = "toolStripRedo";
-            this.toolStripRedo.Size = new System.Drawing.Size(24, 24);
-            this.toolStripRedo.Text = "Redo";
-            this.toolStripRedo.Click += new System.EventHandler(this.toolStripRedo_Click);
-            // 
-            // toolStripBold
-            // 
-            this.toolStripBold.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripBold.Image = global::FinalProjectWinForms.Properties.Resources.bold;
-            this.toolStripBold.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripBold.Name = "toolStripBold";
-            this.toolStripBold.Size = new System.Drawing.Size(24, 24);
-            this.toolStripBold.Text = "Bold";
-            this.toolStripBold.Click += new System.EventHandler(this.toolStripBold_Click);
-            // 
-            // toolStripItalic
-            // 
-            this.toolStripItalic.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripItalic.Image = global::FinalProjectWinForms.Properties.Resources.italic;
-            this.toolStripItalic.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripItalic.Name = "toolStripItalic";
-            this.toolStripItalic.Size = new System.Drawing.Size(24, 24);
-            this.toolStripItalic.Text = "Italic";
-            this.toolStripItalic.Click += new System.EventHandler(this.toolStripItalic_Click);
-            // 
-            // toolStripUnderline
-            // 
-            this.toolStripUnderline.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripUnderline.Image = global::FinalProjectWinForms.Properties.Resources.underline;
-            this.toolStripUnderline.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripUnderline.Name = "toolStripUnderline";
-            this.toolStripUnderline.Size = new System.Drawing.Size(24, 24);
-            this.toolStripUnderline.Text = "Underline";
-            this.toolStripUnderline.Click += new System.EventHandler(this.toolStripUnderline_Click);
-            // 
-            // toolStripStrikeout
-            // 
-            this.toolStripStrikeout.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripStrikeout.Image = global::FinalProjectWinForms.Properties.Resources.strikethrough;
-            this.toolStripStrikeout.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripStrikeout.Name = "toolStripStrikeout";
-            this.toolStripStrikeout.Size = new System.Drawing.Size(24, 24);
-            this.toolStripStrikeout.Text = "Strikeout";
-            this.toolStripStrikeout.Click += new System.EventHandler(this.toolStripStrikeout_Click);
-            // 
-            // toolStripLeft
-            // 
-            this.toolStripLeft.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripLeft.Image = global::FinalProjectWinForms.Properties.Resources.justifyleft;
-            this.toolStripLeft.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripLeft.Name = "toolStripLeft";
-            this.toolStripLeft.Size = new System.Drawing.Size(24, 24);
-            this.toolStripLeft.Text = "Left";
-            this.toolStripLeft.Click += new System.EventHandler(this.toolStripLeft_Click);
-            // 
-            // toolStripCenter
-            // 
-            this.toolStripCenter.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripCenter.Image = global::FinalProjectWinForms.Properties.Resources.justifycenter;
-            this.toolStripCenter.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripCenter.Name = "toolStripCenter";
-            this.toolStripCenter.Size = new System.Drawing.Size(24, 24);
-            this.toolStripCenter.Text = "Center";
-            this.toolStripCenter.Click += new System.EventHandler(this.toolStripCenter_Click);
-            // 
-            // toolStripRight
-            // 
-            this.toolStripRight.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripRight.Image = global::FinalProjectWinForms.Properties.Resources.justifyright;
-            this.toolStripRight.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripRight.Name = "toolStripRight";
-            this.toolStripRight.Size = new System.Drawing.Size(24, 24);
-            this.toolStripRight.Text = "Right";
-            this.toolStripRight.Click += new System.EventHandler(this.toolStripRight_Click);
-            // 
-            // toolStripForegroundColor
-            // 
-            this.toolStripForegroundColor.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripForegroundColor.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripSelectForegroundColor});
-            this.toolStripForegroundColor.Image = global::FinalProjectWinForms.Properties.Resources.forecolor;
-            this.toolStripForegroundColor.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripForegroundColor.Name = "toolStripForegroundColor";
-            this.toolStripForegroundColor.Size = new System.Drawing.Size(33, 24);
-            this.toolStripForegroundColor.Text = "    ";
-            this.toolStripForegroundColor.ToolTipText = "Foreground color";
-            this.toolStripForegroundColor.Click += new System.EventHandler(this.toolStripForegroundColor_Click);
-            // 
-            // toolStripSelectForegroundColor
-            // 
-            this.toolStripSelectForegroundColor.Name = "toolStripSelectForegroundColor";
-            this.toolStripSelectForegroundColor.Size = new System.Drawing.Size(144, 22);
-            this.toolStripSelectForegroundColor.Text = "Select color...";
-            this.toolStripSelectForegroundColor.Click += new System.EventHandler(this.toolStripSelectForegroundColor_Click);
-            // 
-            // toolStripBackgroundColor
-            // 
-            this.toolStripBackgroundColor.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripBackgroundColor.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripSelectBackgroundColor});
-            this.toolStripBackgroundColor.Image = global::FinalProjectWinForms.Properties.Resources.backcolor;
-            this.toolStripBackgroundColor.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripBackgroundColor.Name = "toolStripBackgroundColor";
-            this.toolStripBackgroundColor.Size = new System.Drawing.Size(33, 24);
-            this.toolStripBackgroundColor.Text = "    ";
-            this.toolStripBackgroundColor.ToolTipText = "Background color";
-            this.toolStripBackgroundColor.Click += new System.EventHandler(this.toolStripBackgroundColor_Click);
-            // 
-            // toolStripSelectBackgroundColor
-            // 
-            this.toolStripSelectBackgroundColor.Name = "toolStripSelectBackgroundColor";
-            this.toolStripSelectBackgroundColor.Size = new System.Drawing.Size(144, 22);
-            this.toolStripSelectBackgroundColor.Text = "Select color...";
-            this.toolStripSelectBackgroundColor.Click += new System.EventHandler(this.toolStripSelectBackgroundColor_Click);
-            // 
-            // toolStripBullet
-            // 
-            this.toolStripBullet.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripBullet.Image = global::FinalProjectWinForms.Properties.Resources.bullist;
-            this.toolStripBullet.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripBullet.ImageTransparentColor = System.Drawing.Color.Transparent;
-            this.toolStripBullet.Name = "toolStripBullet";
-            this.toolStripBullet.Size = new System.Drawing.Size(24, 24);
-            this.toolStripBullet.Text = "Bullet";
-            this.toolStripBullet.Click += new System.EventHandler(this.toolStripBullet_Click);
-            // 
-            // toolStripEdits
-            // 
-            this.toolStripEdits.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripEdits.Image = global::FinalProjectWinForms.Properties.Resources.edits;
-            this.toolStripEdits.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripEdits.Name = "toolStripEdits";
-            this.toolStripEdits.Size = new System.Drawing.Size(23, 24);
-            this.toolStripEdits.Text = "edits";
-            this.toolStripEdits.Click += new System.EventHandler(this.editsButton_Click);
-            // 
-            // contextMenuStripCut
-            // 
-            this.contextMenuStripCut.Image = global::FinalProjectWinForms.Properties.Resources.cut;
-            this.contextMenuStripCut.Name = "contextMenuStripCut";
-            this.contextMenuStripCut.Size = new System.Drawing.Size(103, 22);
-            this.contextMenuStripCut.Text = "Cut";
-            // 
-            // contextMenuStripCopy
-            // 
-            this.contextMenuStripCopy.Image = global::FinalProjectWinForms.Properties.Resources.copy;
-            this.contextMenuStripCopy.Name = "contextMenuStripCopy";
-            this.contextMenuStripCopy.Size = new System.Drawing.Size(103, 22);
-            this.contextMenuStripCopy.Text = "Copy";
-            // 
-            // contextMenuStripPaste
-            // 
-            this.contextMenuStripPaste.Image = global::FinalProjectWinForms.Properties.Resources.paste;
-            this.contextMenuStripPaste.Name = "contextMenuStripPaste";
-            this.contextMenuStripPaste.Size = new System.Drawing.Size(103, 22);
-            this.contextMenuStripPaste.Text = "Paste";
-            // 
-            // contextMenuStripUndo
-            // 
-            this.contextMenuStripUndo.Image = global::FinalProjectWinForms.Properties.Resources.undo;
-            this.contextMenuStripUndo.Name = "contextMenuStripUndo";
-            this.contextMenuStripUndo.Size = new System.Drawing.Size(103, 22);
-            this.contextMenuStripUndo.Text = "Undo";
-            // 
-            // contextMenuStripRedo
-            // 
-            this.contextMenuStripRedo.Image = global::FinalProjectWinForms.Properties.Resources.redo;
-            this.contextMenuStripRedo.Name = "contextMenuStripRedo";
-            this.contextMenuStripRedo.Size = new System.Drawing.Size(103, 22);
-            this.contextMenuStripRedo.Text = "Redo";
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -545,10 +535,12 @@
             this.Controls.Add(this.rtb);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(400, 300);
             this.Name = "MainForm";
-            this.Text = "Form1";
+            this.Text = "Share Me";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -610,7 +602,6 @@
         private System.Windows.Forms.RichTextBox inputChatBox;
         private System.Windows.Forms.Button sendChatButton;
         private System.Windows.Forms.ToolStripStatusLabel editsLabel;
-        private System.Windows.Forms.ToolStripButton toolStripEdits;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
         private System.Windows.Forms.ToolStripButton toolStripSaveAs;
     }

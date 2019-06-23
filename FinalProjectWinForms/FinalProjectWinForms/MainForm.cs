@@ -156,6 +156,43 @@ namespace FinalProjectWinForms
             sendChatButton.Location = new Point(sendChatButton.Location.X, sendChatButton.Location.Y + heightDiffernce);
         }
 
-
+        private void rtb_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control)
+            {
+                switch (e.KeyCode)
+                {
+                    case Keys.S:
+                        SaveFile();
+                        break;
+                    case Keys.X:
+                        toolStripCut_Click(sender, e);
+                        break;
+                    case Keys.C:
+                        toolStripCopy_Click(sender, e);
+                        break;
+                    case Keys.V:
+                        toolStripPaste_Click(sender, e);
+                        break;
+                    case Keys.Z:
+                        toolStripUndo_Click(sender, e);
+                        break;
+                    case Keys.Y:
+                        toolStripRedo_Click(sender, e);
+                        break;
+                    case Keys.B:
+                        toolStripBold_Click(sender, e);
+                        break;
+                    case Keys.I:
+                        toolStripItalic_Click(sender, e);
+                        break;
+                    case Keys.U:
+                        toolStripUnderline_Click(sender, e);
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
     }
 }

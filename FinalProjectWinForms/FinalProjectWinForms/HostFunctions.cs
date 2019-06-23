@@ -71,7 +71,7 @@ namespace FinalProjectWinForms
         private string SelectFolder()
         {
             FolderBrowserDialog folderDialog = new FolderBrowserDialog();
-            if (folderDialog.ShowDialog()==DialogResult.OK)
+            if (folderDialog.ShowDialog(this)==DialogResult.OK)
                 return folderDialog.SelectedPath;
             return "";
         }
@@ -101,7 +101,7 @@ namespace FinalProjectWinForms
             OpenFileDialog fileDialog = new OpenFileDialog();
             fileDialog.Filter = string.Format("RTF files (*{0})|*{0}", Constants.RTF_EXTENSION);
             fileDialog.FileOk += CheckFileExtension;
-            if (fileDialog.ShowDialog() == DialogResult.OK)
+            if (fileDialog.ShowDialog(this) == DialogResult.OK)
             {
                 return fileDialog.FileName;
             }
@@ -143,7 +143,7 @@ namespace FinalProjectWinForms
             //pythonProcess.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
 
             pythonProcess.Start();
-            Thread.Sleep(200);
+            Thread.Sleep(500);
             return pythonProcess;
         }
     }

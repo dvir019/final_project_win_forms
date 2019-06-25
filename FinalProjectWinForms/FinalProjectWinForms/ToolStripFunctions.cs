@@ -82,6 +82,26 @@ namespace FinalProjectWinForms
             }
         }
 
+        private void DisableUndoButton()
+        {
+            toolStripUndo.Enabled = false;
+        }
+
+        private void DisableRedoButton()
+        {
+            toolStripUndo.Enabled = false;
+        }
+
+        private void EnableUndoButton()
+        {
+            toolStripUndo.Enabled = true;
+        }
+
+        private void EnableRedoButton()
+        {
+            toolStripUndo.Enabled = true;
+        }
+
         #endregion Undo/Redo
 
         #region Font style management
@@ -436,8 +456,15 @@ namespace FinalProjectWinForms
         /// </summary>
         private void SaveFile()
         {
-            rtb.SaveFile(filePath);
-            changedAndDidntSave = false;
+            try
+            {
+                rtb.SaveFile(filePath);
+                changedAndDidntSave = false;
+            }
+            catch
+            {
+                MessageBox.Show("Can't save file", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         /// <summary>

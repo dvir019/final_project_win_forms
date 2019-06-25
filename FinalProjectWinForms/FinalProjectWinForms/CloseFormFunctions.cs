@@ -20,9 +20,11 @@ namespace FinalProjectWinForms
         {
             if (connectOrHost == ConnectOrHost.Host && changedAndDidntSave)
             {
-                DialogResult saveResult = MessageBox.Show("Do you want to save the file?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult saveResult = MessageBox.Show("Do you want to save the file?", "", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
                 if (saveResult == DialogResult.Yes)
                     SaveFile();
+                if (saveResult == DialogResult.Cancel)
+                    e.Cancel = true;
             }
         }
 

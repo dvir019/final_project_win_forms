@@ -124,8 +124,6 @@ namespace FinalProjectWinForms
             }
             previousText = rtb.Text;
             changedAndDidntSave = true;
-
-            
         }
 
         /// <summary>
@@ -137,7 +135,6 @@ namespace FinalProjectWinForms
         {
             if (WindowState == FormWindowState.Minimized)
                 return;
-            //MessageBox.Show(string.Format("Height: {0}, Width: {1}", Height, Width));
             Rectangle screenRectangle = RectangleToScreen(ClientRectangle);
 
             int titleHeight = screenRectangle.Top - Top;
@@ -151,7 +148,6 @@ namespace FinalProjectWinForms
             chatBox.Height = chatNewHeight;
             int heightDiffernce = chatNewHeight - chatCurrentHeight;
 
-            //MessageBox.Show(string.Format("dif: {0}\nrich: {1}->{2}\nbutton: {3}->{4}", heightDiffernce, richTextBox1.Location, new Point(richTextBox1.Location.X, richTextBox1.Location.Y+heightDiffernce), button1.Location, new Point(button1.Location.X, button1.Location.Y + heightDiffernce)));
             inputChatBox.Location = new Point(inputChatBox.Location.X, inputChatBox.Location.Y + heightDiffernce);
             sendChatButton.Location = new Point(sendChatButton.Location.X, sendChatButton.Location.Y + heightDiffernce);
         }

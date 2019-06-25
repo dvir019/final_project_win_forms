@@ -96,6 +96,7 @@
     </Compile>
     <EmbeddedResource Include="ConnectAndHostScreen.resx">
       <DependentUpon>ConnectAndHostScreen.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="EditsForm.resx">
       <DependentUpon>EditsForm.cs</DependentUpon>
@@ -156,9 +157,8 @@
     <Content Include="Images\strikethrough.gif" />
     <Content Include="Images\underline.gif" />
     <Content Include="Images\undo.gif" />
+    <Content Include="Python\server.py" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Python\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

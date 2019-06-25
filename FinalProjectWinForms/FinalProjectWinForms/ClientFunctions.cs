@@ -70,7 +70,7 @@ namespace FinalProjectWinForms
             }
             catch
             {
-                MessageBox.Show("ERROR SEND!!!");
+                //MessageBox.Show("ERROR SEND!!!");
             }
         }
         #endregion send
@@ -132,8 +132,6 @@ namespace FinalProjectWinForms
                 if (rtb.Text.Trim() == "")
                 {
                     rtb.Rtf = newRtf;
-                    //MessageBox.Show("EMPTY!!!!!!");
-                    //MessageBox.Show(string.Format("LEN: {0}\nrealLen: {1}\n{2}\n\n\nRTF:{3}\n\n\nreal RTF:\n{4}\n\nText: [{5}]", length, message.Length, message, newRtf, rtb.Rtf, rtb.Text));
                 }
 
                 if (otherCursorBefore < otherCursorAfter)  // Text was added
@@ -205,16 +203,13 @@ namespace FinalProjectWinForms
         /// <param name="otherCursorAfter">The other user cursor after the change</param>
         private void TextAdded(int myCursorBefore, int selectionLength, int otherCursorBefore, int otherCursorAfter)
         {
-            //MessageBox.Show("Added!");
             if (otherCursorBefore < myCursorBefore)
             {
                 rtb.SelectionStart = myCursorBefore + (otherCursorAfter - otherCursorBefore);
-                //MessageBox.Show(string.Format("Added and moved, {0}->{1}",myCursorBefore, rtb.SelectionStart));
             }
             else
             {
                 rtb.SelectionStart = myCursorBefore;
-                //MessageBox.Show(string.Format("Added NOT moved, {0}->{1}", myCursorBefore, rtb.SelectionStart));
             }
             rtb.SelectionLength = selectionLength;
         }
@@ -227,7 +222,6 @@ namespace FinalProjectWinForms
         /// <param name="otherCursorAfter">The other user cursor after the change</param>
         private void TextDeleted(int myCursorBefore, int selectionLength, int otherCursorBefore, int otherCursorAfter)
         {
-            //MessageBox.Show("Deleted!");
             if (myCursorBefore >= otherCursorBefore)
             {
                 rtb.SelectionStart = myCursorBefore - (otherCursorBefore - otherCursorAfter);
@@ -235,12 +229,10 @@ namespace FinalProjectWinForms
             else if (myCursorBefore < otherCursorBefore && myCursorBefore > otherCursorAfter)
             {
                 rtb.SelectionStart = otherCursorAfter;
-                //MessageBox.Show(string.Format("Deleted and moved if [2], {0}->{1}", myCursorBefore, rtb.SelectionStart));
             }
             else
             {
                 rtb.SelectionStart = myCursorBefore;
-                //MessageBox.Show(string.Format("Deleted NOT moved, {0}->{1}", myCursorBefore, rtb.SelectionStart));
             }
             rtb.SelectionLength = selectionLength;
         }
@@ -268,7 +260,7 @@ namespace FinalProjectWinForms
             if (connectOrHost == ConnectOrHost.Host)
             {
                 SendMessage("3,bye");
-                Thread.Sleep(10);
+                Thread.Sleep(300);
             }
 
             stopAll = true;
@@ -299,20 +291,5 @@ namespace FinalProjectWinForms
             }
             return localIP;
         }
-
-        #region error
-
-        private void Error()
-        {
-            string message = "Unable to connect to server\nTry to connect again?\n";
-            if (connectOrHost == ConnectOrHost.Connect)
-                message += "If you choose no, the program will be closed.";
-            else if (connectOrHost == ConnectOrHost.Host)
-                message += "If you choose no, you will be able to save the file and then the program will be closed";
-            DialogResult result = MessageBox.Show("Unable to connect to server\nTry to connect again?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
-
-        }
-
-        #endregion error
     }
 }

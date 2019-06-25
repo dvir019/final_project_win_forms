@@ -24,7 +24,6 @@ namespace FinalProjectWinForms
         /// <param name="message">The message</param>
         private void AddNewMessage(string senderName, string message)
         {
-            //MessageBox.Show(string.Format("Name: {0}\nmessage: {1}\nchatBox.Text.Length: {2}", senderName, message, chatBox.Text.Length, ));
             int selectionStart = chatBox.SelectionStart;
             int selectionLength = chatBox.SelectionLength;
             if (chatBox.Text != "")
@@ -45,6 +44,7 @@ namespace FinalProjectWinForms
             AddNewMessage(name, GetTrimmedChatMessage());
             ConstructAndSendChat();
             inputChatBox.ResetText();
+            inputChatBox.Focus();
         }
 
         private string GetTrimmedChatMessage()

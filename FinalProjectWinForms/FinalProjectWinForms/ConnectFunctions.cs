@@ -36,7 +36,7 @@ namespace FinalProjectWinForms
         {
             try
             {
-                TcpClient client = new TcpClient(connectIpAddress.Text, 5555);
+                TcpClient client = new TcpClient(connectIpAddress.Text, int.Parse(connectPortTextBox.Text));
                 tcpClient = client;
                 networkStream = client.GetStream();
                 return true;

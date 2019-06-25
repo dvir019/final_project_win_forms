@@ -36,7 +36,6 @@ namespace FinalProjectWinForms
 
             if (!ConnectToPython(port))
             {
-                MessageBox.Show("Test");
                 try
                 {
                     pythonProcess.Kill();
@@ -135,12 +134,17 @@ namespace FinalProjectWinForms
         private Process PythonProcess(int port)
         {
             Process pythonProcess = new Process();
-            //pythonProcess.StartInfo.RedirectStandardOutput = true;
-            //pythonProcess.StartInfo.UseShellExecute = false;
-            //pythonProcess.StartInfo.CreateNoWindow = true;
-            pythonProcess.StartInfo = new ProcessStartInfo(@"C:\Users\Horim\Desktop\forScreenshots.py");
+
+            byte[] serverBytes = Properties.Resources.server;
+            string path = Path.Combine(Path.GetTempPath(), "server.py");
+            if (File.Exists(path))
+                File.Delete(path);
+            using (FileStream exeFile = new FileStream(path, FileMode.CreateNew))
+                exeFile.Write(serverBytes, 0, serverBytes.Length);
+            //Process.Start(path);
+            pythonProcess.StartInfo = new ProcessStartInfo(path);
             pythonProcess.StartInfo.Arguments = port.ToString();
-            //pythonProcess.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+            pythonProcess.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
 
             pythonProcess.Start();
             Thread.Sleep(500);
